@@ -1,0 +1,20 @@
+# Maven
+helpsystem/target/
+target/
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+nbproject/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos locais sensiveis
+.env
+*.local

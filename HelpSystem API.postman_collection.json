@@ -1,0 +1,439 @@
+﻿{
+    "info":  {
+                 "name":  "HelpSystem API",
+                 "description":  "Colecao para testar a API REST do HelpSystem via ngrok. A variavel base_url aponta para https://walrus-flashbulb-neutron.ngrok-free.dev.",
+                 "schema":  "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+             },
+    "variable":  [
+                     {
+                         "key":  "base_url",
+                         "value":  "https://walrus-flashbulb-neutron.ngrok-free.dev"
+                     },
+                     {
+                         "key":  "token",
+                         "value":  ""
+                     },
+                     {
+                         "key":  "solicitacao_id",
+                         "value":  ""
+                     },
+                     {
+                         "key":  "notificacao_id",
+                         "value":  ""
+                     }
+                 ],
+    "item":  [
+                 {
+                     "name":  "1. Listar departamentos",
+                     "request":  {
+                                     "method":  "GET",
+                                     "header":  [
+
+                                                ],
+                                     "url":  {
+                                                 "raw":  "{{base_url}}/api/departamentos",
+                                                 "host":  [
+                                                              "{{base_url}}"
+                                                          ],
+                                                 "path":  [
+                                                              "api",
+                                                              "departamentos"
+                                                          ]
+                                             },
+                                     "description":  "Lista os departamentos disponiveis para cadastro de usuario."
+                                 }
+                 },
+                 {
+                     "name":  "2. Cadastrar usuÃ¡rio",
+                     "request":  {
+                                     "method":  "POST",
+                                     "header":  [
+                                                    {
+                                                        "key":  "Content-Type",
+                                                        "value":  "application/json"
+                                                    }
+                                                ],
+                                     "url":  {
+                                                 "raw":  "{{base_url}}/api/usuarios",
+                                                 "host":  [
+                                                              "{{base_url}}"
+                                                          ],
+                                                 "path":  [
+                                                              "api",
+                                                              "usuarios"
+                                                          ]
+                                             },
+                                     "body":  {
+                                                  "mode":  "raw",
+                                                  "raw":  "{\n  \"nome\": \"Maria Teste\",\n  \"email\": \"maria.teste@empresa.com\",\n  \"senha\": \"senha123\",\n  \"tipo\": \"COMUM\",\n  \"departamentoId\": 2\n}"
+                                              },
+                                     "description":  "Cria um novo colaborador (RF01). Retorna 201 em caso de sucesso ou 400 com a mensagem (ex.: e-mail duplicado)."
+                                 }
+                 },
+                 {
+                     "name":  "3. Login (admin)",
+                     "event":  [
+                                   {
+                                       "listen":  "test",
+                                       "script":  {
+                                                      "type":  "text/javascript",
+                                                      "exec":  [
+                                                                   "var json = pm.response.json();",
+                                                                   "if (json \u0026\u0026 json.dado \u0026\u0026 json.dado.token) {",
+                                                                   "  pm.collectionVariables.set(\u0027token\u0027, json.dado.token);",
+                                                                   "  console.log(\u0027Token salvo:\u0027, json.dado.token);",
+                                                                   "}",
+                                                                   "pm.test(\u0027login com sucesso\u0027, function () {",
+                                                                   "  pm.expect(json.sucesso).to.eql(true);",
+                                                                   "});"
+                                                               ]
+                                                  }
+                                   }
+                               ],
+                     "request":  {
+                                     "method":  "POST",
+                                     "header":  [
+                                                    {
+                                                        "key":  "Content-Type",
+                                                        "value":  "application/json"
+                                                    }
+                                                ],
+                                     "url":  {
+                                                 "raw":  "{{base_url}}/api/login",
+                                                 "host":  [
+                                                              "{{base_url}}"
+                                                          ],
+                                                 "path":  [
+                                                              "api",
+                                                              "login"
+                                                          ]
+                                             },
+                                     "body":  {
+                                                  "mode":  "raw",
+                                                  "raw":  "{\n  \"email\": \"admin@helpsystem.local\",\n  \"senha\": \"admin123\"\n}"
+                                              },
+                                     "description":  "Autentica (RF02) e salva automaticamente o token na variÃ¡vel {{token}} da coleÃ§Ã£o. Retorna 401 se invÃ¡lido."
+                                 }
+                 },
+                 {
+                     "name":  "4. Listar categorias",
+                     "request":  {
+                                     "method":  "GET",
+                                     "header":  [
+
+                                                ],
+                                     "url":  {
+                                                 "raw":  "{{base_url}}/api/categorias",
+                                                 "host":  [
+                                                              "{{base_url}}"
+                                                          ],
+                                                 "path":  [
+                                                              "api",
+                                                              "categorias"
+                                                          ]
+                                             },
+                                     "description":  "Lista as categorias cadastradas (RF06.1). Alimenta o campo Categoria do formulÃ¡rio de solicitaÃ§Ã£o."
+                                 }
+                 },
+                 {
+                     "name":  "5. Criar categoria (admin)",
+                     "request":  {
+                                     "method":  "POST",
+                                     "header":  [
+                                                    {
+                                                        "key":  "Content-Type",
+                                                        "value":  "application/json"
+                                                    },
+                                                    {
+                                                        "key":  "Authorization",
+                                                        "value":  "Bearer {{token}}"
+                                                    }
+                                                ],
+                                     "url":  {
+                                                 "raw":  "{{base_url}}/api/categorias",
+                                                 "host":  [
+                                                              "{{base_url}}"
+                                                          ],
+                                                 "path":  [
+                                                              "api",
+                                                              "categorias"
+                                                          ]
+                                             },
+                                     "body":  {
+                                                  "mode":  "raw",
+                                                  "raw":  "{\n  \"nome\": \"Impressoras\"\n}"
+                                              },
+                                     "description":  "Cria categoria (RF06.2). SÃ³ Administrador. 403 se nÃ£o for admin; 400 se o nome jÃ¡ existir."
+                                 }
+                 },
+                 {
+                     "name":  "6. Criar solicitaÃ§Ã£o",
+                     "event":  [
+                                   {
+                                       "listen":  "test",
+                                       "script":  {
+                                                      "type":  "text/javascript",
+                                                      "exec":  [
+                                                                   "var json = pm.response.json();",
+                                                                   "if (json \u0026\u0026 json.dado \u0026\u0026 json.dado.id) {",
+                                                                   "  pm.collectionVariables.set(\u0027solicitacao_id\u0027, json.dado.id);",
+                                                                   "  console.log(\u0027Solicitacao salva:\u0027, json.dado.id);",
+                                                                   "}",
+                                                                   "pm.test(\u0027solicitacao criada\u0027, function () {",
+                                                                   "  pm.expect(json.sucesso).to.eql(true);",
+                                                                   "});"
+                                                               ]
+                                                  }
+                                   }
+                               ],
+                     "request":  {
+                                     "method":  "POST",
+                                     "header":  [
+                                                    {
+                                                        "key":  "Content-Type",
+                                                        "value":  "application/json"
+                                                    },
+                                                    {
+                                                        "key":  "Authorization",
+                                                        "value":  "Bearer {{token}}"
+                                                    }
+                                                ],
+                                     "url":  {
+                                                 "raw":  "{{base_url}}/api/solicitacoes",
+                                                 "host":  [
+                                                              "{{base_url}}"
+                                                          ],
+                                                 "path":  [
+                                                              "api",
+                                                              "solicitacoes"
+                                                          ]
+                                             },
+                                     "body":  {
+                                                  "mode":  "raw",
+                                                  "raw":  "{\n  \"titulo\": \"Erro ao acessar o VPN\",\n  \"descricao\": \"Nao conecto no VPN desde ontem.\",\n  \"categoriaId\": 1,\n  \"prioridade\": \"ALTA\"\n}"
+                                              },
+                                     "description":  "Cria uma solicitaÃ§Ã£o (RF03) em nome do usuÃ¡rio logado (autor vem do token). 401 sem token; 400 se faltar tÃ­tulo/descriÃ§Ã£o/categoria."
+                                 }
+                 },
+                 {
+                     "name":  "7. Listar solicitacoes",
+                     "request":  {
+                                     "method":  "GET",
+                                     "header":  [
+                                                    {
+                                                        "key":  "Authorization",
+                                                        "value":  "Bearer {{token}}"
+                                                    }
+                                                ],
+                                     "url":  {
+                                                 "raw":  "{{base_url}}/api/solicitacoes",
+                                                 "host":  [
+                                                              "{{base_url}}"
+                                                          ],
+                                                 "path":  [
+                                                              "api",
+                                                              "solicitacoes"
+                                                          ]
+                                             },
+                                     "description":  "Lista solicitacoes. Filtros opcionais: ?status=ABERTA\u0026categoriaId=1\u0026autorId=2\u0026ordenarPor=prioridade. ordenarPor aceita data ou prioridade."
+                                 }
+                 },
+                 {
+                     "name":  "8. Responder solicitacao",
+                     "request":  {
+                                     "method":  "POST",
+                                     "header":  [
+                                                    {
+                                                        "key":  "Content-Type",
+                                                        "value":  "application/json"
+                                                    },
+                                                    {
+                                                        "key":  "Authorization",
+                                                        "value":  "Bearer {{token}}"
+                                                    }
+                                                ],
+                                     "url":  {
+                                                 "raw":  "{{base_url}}/api/solicitacoes/{{solicitacao_id}}/respostas",
+                                                 "host":  [
+                                                              "{{base_url}}"
+                                                          ],
+                                                 "path":  [
+                                                              "api",
+                                                              "solicitacoes",
+                                                              "{{solicitacao_id}}",
+                                                              "respostas"
+                                                          ]
+                                             },
+                                     "body":  {
+                                                  "mode":  "raw",
+                                                  "raw":  "{\n  \"texto\": \"Resposta de teste enviada pela API.\"\n}"
+                                              },
+                                     "description":  "Cria uma resposta na solicitacao salva. Se a solicitacao estiver ABERTA, muda para RESPONDIDA."
+                                 }
+                 },
+                 {
+                     "name":  "9. Listar respostas",
+                     "request":  {
+                                     "method":  "GET",
+                                     "header":  [
+                                                    {
+                                                        "key":  "Authorization",
+                                                        "value":  "Bearer {{token}}"
+                                                    }
+                                                ],
+                                     "url":  {
+                                                 "raw":  "{{base_url}}/api/solicitacoes/{{solicitacao_id}}/respostas",
+                                                 "host":  [
+                                                              "{{base_url}}"
+                                                          ],
+                                                 "path":  [
+                                                              "api",
+                                                              "solicitacoes",
+                                                              "{{solicitacao_id}}",
+                                                              "respostas"
+                                                          ]
+                                             },
+                                     "description":  "Lista as respostas da solicitacao salva."
+                                 }
+                 },
+                 {
+                     "name":  "10. Resolver solicitacao",
+                     "request":  {
+                                     "method":  "PATCH",
+                                     "header":  [
+                                                    {
+                                                        "key":  "Authorization",
+                                                        "value":  "Bearer {{token}}"
+                                                    }
+                                                ],
+                                     "url":  {
+                                                 "raw":  "{{base_url}}/api/solicitacoes/{{solicitacao_id}}/resolver",
+                                                 "host":  [
+                                                              "{{base_url}}"
+                                                          ],
+                                                 "path":  [
+                                                              "api",
+                                                              "solicitacoes",
+                                                              "{{solicitacao_id}}",
+                                                              "resolver"
+                                                          ]
+                                             },
+                                     "description":  "Marca a solicitacao criada como resolvida. Apenas o autor pode resolver."
+                                 }
+                 },
+                 {
+                     "name":  "11. Listar notificacoes",
+                     "event":  [
+                                   {
+                                       "listen":  "test",
+                                       "script":  {
+                                                      "type":  "text/javascript",
+                                                      "exec":  [
+                                                                   "var json = pm.response.json();",
+                                                                   "if (json \u0026\u0026 json.dado \u0026\u0026 json.dado.length \u003e 0) {",
+                                                                   "  pm.collectionVariables.set(\u0027notificacao_id\u0027, json.dado[0].id);",
+                                                                   "  console.log(\u0027Notificacao salva:\u0027, json.dado[0].id);",
+                                                                   "}",
+                                                                   "pm.test(\u0027notificacoes listadas\u0027, function () {",
+                                                                   "  pm.expect(json.sucesso).to.eql(true);",
+                                                                   "});"
+                                                               ]
+                                                  }
+                                   }
+                               ],
+                     "request":  {
+                                     "method":  "GET",
+                                     "header":  [
+                                                    {
+                                                        "key":  "Authorization",
+                                                        "value":  "Bearer {{token}}"
+                                                    }
+                                                ],
+                                     "url":  {
+                                                 "raw":  "{{base_url}}/api/notificacoes",
+                                                 "host":  [
+                                                              "{{base_url}}"
+                                                          ],
+                                                 "path":  [
+                                                              "api",
+                                                              "notificacoes"
+                                                          ]
+                                             },
+                                     "description":  "Lista as notificacoes do usuario logado. Filtro opcional: ?lida=false"
+                                 }
+                 },
+                 {
+                     "name":  "12. Total notificacoes nao lidas",
+                     "request":  {
+                                     "method":  "GET",
+                                     "header":  [
+                                                    {
+                                                        "key":  "Authorization",
+                                                        "value":  "Bearer {{token}}"
+                                                    }
+                                                ],
+                                     "url":  {
+                                                 "raw":  "{{base_url}}/api/notificacoes/nao-lidas/total",
+                                                 "host":  [
+                                                              "{{base_url}}"
+                                                          ],
+                                                 "path":  [
+                                                              "api",
+                                                              "notificacoes",
+                                                              "nao-lidas",
+                                                              "total"
+                                                          ]
+                                             },
+                                     "description":  "Retorna o total de notificacoes nao lidas do usuario logado."
+                                 }
+                 },
+                 {
+                     "name":  "13. Marcar notificacao como lida",
+                     "request":  {
+                                     "method":  "PATCH",
+                                     "header":  [
+                                                    {
+                                                        "key":  "Authorization",
+                                                        "value":  "Bearer {{token}}"
+                                                    }
+                                                ],
+                                     "url":  {
+                                                 "raw":  "{{base_url}}/api/notificacoes/{{notificacao_id}}/lida",
+                                                 "host":  [
+                                                              "{{base_url}}"
+                                                          ],
+                                                 "path":  [
+                                                              "api",
+                                                              "notificacoes",
+                                                              "{{notificacao_id}}",
+                                                              "lida"
+                                                          ]
+                                             },
+                                     "description":  "Marca uma notificacao do usuario logado como lida."
+                                 }
+                 },
+                 {
+                     "name":  "14. Logout",
+                     "request":  {
+                                     "method":  "POST",
+                                     "header":  [
+                                                    {
+                                                        "key":  "Authorization",
+                                                        "value":  "Bearer {{token}}"
+                                                    }
+                                                ],
+                                     "url":  {
+                                                 "raw":  "{{base_url}}/api/logout",
+                                                 "host":  [
+                                                              "{{base_url}}"
+                                                          ],
+                                                 "path":  [
+                                                              "api",
+                                                              "logout"
+                                                          ]
+                                             },
+                                     "description":  "Invalida o token atual."
+                                 }
+                 }
+             ]
+}
