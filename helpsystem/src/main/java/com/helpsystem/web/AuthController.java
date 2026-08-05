@@ -51,7 +51,7 @@ public class AuthController {
         String token = extrairToken(authorization);
         if (token == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(new ApiResponse(false, "Token nao informado.", null));
+                    .body(new ApiResponse(false, "Token não informado.", null));
         }
 
         sessoes.invalidar(token);

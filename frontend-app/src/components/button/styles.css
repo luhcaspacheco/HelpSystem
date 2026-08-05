@@ -1,0 +1,36 @@
+.button-component {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  border: 1px solid var(--primary-color);
+  border-radius: 6px;
+  background: var(--primary-color);
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.button-component:hover:not(:disabled) {
+  border-color: var(--primary-hover-color);
+  background: var(--primary-hover-color);
+}
+
+.button-component:disabled {
+  cursor: not-allowed;
+  opacity: 0.62;
+}
+
+.button-nav {
+  border-color: var(--strong-border-color);
+  background: var(--card-color);
+  color: var(--heading-color);
+}
+
+.button-nav:hover:not(:disabled) {
+  border-color: var(--primary-color);
+  background: var(--primary-soft-color);
+  color: var(--primary-hover-color);
+}

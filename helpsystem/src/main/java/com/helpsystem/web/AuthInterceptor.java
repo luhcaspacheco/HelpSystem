@@ -38,7 +38,7 @@ public class AuthInterceptor implements HandlerInterceptor {
         String token = extrairToken(request.getHeader("Authorization"));
         Optional<Usuario> usuario = sessoes.buscarUsuario(token);
         if (usuario.isEmpty()) {
-            escreverErro(response, HttpStatus.UNAUTHORIZED, "Token invalido ou expirado.");
+            escreverErro(response, HttpStatus.UNAUTHORIZED, "Token inválido ou expirado.");
             return false;
         }
 

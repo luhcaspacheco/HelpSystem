@@ -11,4 +11,6 @@ import java.util.List;
 public interface RespostaRepository extends JpaRepository<Resposta, Integer> {
 
     List<Resposta> findBySolicitacaoIdOrderByDataCriacaoAsc(Integer solicitacaoId);
+
+    void deleteBySolicitacaoId(Integer solicitacaoId);
 }

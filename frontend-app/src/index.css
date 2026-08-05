@@ -1,0 +1,65 @@
+:root {
+  --background-color: #f3f5f8;
+  --card-color: #ffffff;
+  --soft-surface-color: #f8fafc;
+  --text-color: #181818;
+  --heading-color: #032d60;
+  --muted-text-color: #5f6b7a;
+  --border-color: #d8dde6;
+  --strong-border-color: #b8c2d0;
+  --primary-color: #0176d3;
+  --primary-hover-color: #0b5cab;
+  --primary-soft-color: #eef6ff;
+  --danger-color: #ba0517;
+  --danger-soft-color: #fef1f2;
+  --success-color: #2e844a;
+  --success-soft-color: #eaf7ee;
+  --warning-color: #8c4b02;
+  --warning-soft-color: #fff4e5;
+  font-family: Inter, "Segoe UI", Arial, Helvetica, sans-serif;
+  color: var(--text-color);
+  background: var(--background-color);
+  font-synthesis: none;
+}
+
+html {
+  min-width: 320px;
+  background: var(--background-color);
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  letter-spacing: 0;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(1, 118, 211, 0.2);
+  outline-offset: 2px;
+}
+
+* {
+  box-sizing: border-box;
+}

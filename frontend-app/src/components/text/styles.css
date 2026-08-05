@@ -1,0 +1,22 @@
+.text-component {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.text {
+  color: var(--text-color);
+  font-size: 0.95rem;
+}
+
+.title {
+  margin: 0 0 8px;
+  color: var(--heading-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  padding-bottom: 1.5rem;
+  color: var(--muted-text-color);
+  font-size: 0.95rem;
+}

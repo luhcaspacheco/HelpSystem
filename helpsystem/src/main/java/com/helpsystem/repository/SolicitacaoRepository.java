@@ -24,15 +24,25 @@ public interface SolicitacaoRepository extends JpaRepository<Solicitacao, Intege
             where (:status is null or s.status = :status)
               and (:categoriaId is null or s.categoria.id = :categoriaId)
               and (:autorId is null or s.autor.id = :autorId)
+              and (
+                :termo is null
+                or lower(s.titulo) like concat('%', :termo, '%')
+                or lower(s.descricao) like concat('%', :termo, '%')
+              )
             order by s.dataCriacao desc
             """)
-    List<Solicitacao> filtrar(StatusSolicitacao status, Integer categoriaId, Integer autorId);
+    List<Solicitacao> filtrar(StatusSolicitacao status, Integer categoriaId, Integer autorId, String termo);
 
     @Query("""
             select s from Solicitacao s
             where (:status is null or s.status = :status)
               and (:categoriaId is null or s.categoria.id = :categoriaId)
               and (:autorId is null or s.autor.id = :autorId)
+              and (
+                :termo is null
+                or lower(s.titulo) like concat('%', :termo, '%')
+                or lower(s.descricao) like concat('%', :termo, '%')
+              )
             order by
               case s.prioridade
                 when com.helpsystem.model.enums.Prioridade.ALTA then 1
@@ -41,5 +51,9 @@ public interface SolicitacaoRepository extends JpaRepository<Solicitacao, Intege
               end,
               s.dataCriacao desc
             """)
-    List<Solicitacao> filtrarOrdenandoPorPrioridade(StatusSolicitacao status, Integer categoriaId, Integer autorId);
+    List<Solicitacao> filtrarOrdenandoPorPrioridade(
+            StatusSolicitacao status,
+            Integer categoriaId,
+            Integer autorId,
+            String termo);
 }

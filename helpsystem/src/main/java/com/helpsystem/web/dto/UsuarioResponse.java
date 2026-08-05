@@ -1,6 +1,7 @@
 package com.helpsystem.web.dto;
 
 import com.helpsystem.model.Usuario;
+import com.helpsystem.model.enums.TipoUsuario;
 
 /**
  * Representação segura do usuário para a resposta JSON.
@@ -12,12 +13,16 @@ public class UsuarioResponse {
     public String email;
     public String tipo;
     public boolean admin;
+    public boolean ativo;
 
     public UsuarioResponse(Usuario u) {
+        TipoUsuario tipoUsuario = u.getTipo() != null ? u.getTipo() : TipoUsuario.COMUM;
+
         this.id = u.getId();
         this.nome = u.getNome();
         this.email = u.getEmail();
-        this.tipo = u.getTipo().name();
-        this.admin = u.isAdmin();
+        this.tipo = tipoUsuario.name();
+        this.admin = tipoUsuario == TipoUsuario.ADMIN;
+        this.ativo = u.isAtivo();
     }
 }

@@ -14,7 +14,7 @@ public class ApiExceptionHandler {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ApiResponse> jsonInvalido() {
         return ResponseEntity.badRequest()
-                .body(new ApiResponse(false, "JSON invalido ou corpo da requisicao ausente.", null));
+                .body(new ApiResponse(false, "JSON inválido ou corpo da requisição ausente.", null));
     }
 
     @ExceptionHandler(Exception.class)

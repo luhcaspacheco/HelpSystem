@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,6 +42,7 @@ public class SolicitacaoController {
             @RequestParam(value = "status", required = false) String status,
             @RequestParam(value = "categoriaId", required = false) Integer categoriaId,
             @RequestParam(value = "autorId", required = false) Integer autorId,
+            @RequestParam(value = "termo", required = false) String termo,
             @RequestParam(value = "ordenarPor", required = false, defaultValue = "data") String ordenarPor) {
 
         StatusSolicitacao statusFiltro = null;
@@ -49,19 +51,19 @@ public class SolicitacaoController {
                 statusFiltro = StatusSolicitacao.valueOf(status.trim().toUpperCase());
             } catch (IllegalArgumentException e) {
                 return ResponseEntity.badRequest()
-                        .body(new ApiResponse(false, "Status invalido (use ABERTA, RESPONDIDA ou RESOLVIDA).", null));
+                        .body(new ApiResponse(false, "Status inválido (use ABERTA, RESPONDIDA ou RESOLVIDA).", null));
             }
         }
         if (!"data".equalsIgnoreCase(ordenarPor) && !"prioridade".equalsIgnoreCase(ordenarPor)) {
             return ResponseEntity.badRequest()
-                    .body(new ApiResponse(false, "Ordenacao invalida (use data ou prioridade).", null));
+                    .body(new ApiResponse(false, "Ordenação inválida (use data ou prioridade).", null));
         }
 
-        List<SolicitacaoResponse> resposta = solicitacoes.listar(statusFiltro, categoriaId, autorId, ordenarPor).stream()
+        List<SolicitacaoResponse> resposta = solicitacoes.listar(statusFiltro, categoriaId, autorId, termo, ordenarPor).stream()
                 .map(SolicitacaoResponse::new)
                 .toList();
 
-        return ResponseEntity.ok(new ApiResponse(true, "Solicitacoes listadas com sucesso.", resposta));
+        return ResponseEntity.ok(new ApiResponse(true, "Solicitações listadas com sucesso.", resposta));
     }
 
     @GetMapping("/solicitacoes/{id}")
@@ -69,10 +71,10 @@ public class SolicitacaoController {
         Solicitacao solicitacao = solicitacoes.buscarPorId(id).orElse(null);
         if (solicitacao == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body(new ApiResponse(false, "Solicitacao nao encontrada.", null));
+                    .body(new ApiResponse(false, "Solicitação não encontrada.", null));
         }
 
-        return ResponseEntity.ok(new ApiResponse(true, "Solicitacao encontrada.", new SolicitacaoResponse(solicitacao)));
+        return ResponseEntity.ok(new ApiResponse(true, "Solicitação encontrada.", new SolicitacaoResponse(solicitacao)));
     }
 
     @PostMapping("/solicitacoes")
@@ -92,12 +94,26 @@ public class SolicitacaoController {
         Usuario usuarioLogado = (Usuario) request.getAttribute(AuthInterceptor.USUARIO_LOGADO);
         ResultadoOperacao r = solicitacoes.resolver(id, usuarioLogado);
         if (!r.isSucesso()) {
-            HttpStatus status = r.getMensagem().contains("nao encontrada")
+            HttpStatus status = r.getMensagem().contains("não encontrada")
                     ? HttpStatus.NOT_FOUND
                     : HttpStatus.FORBIDDEN;
             return ResponseEntity.status(status).body(new ApiResponse(false, r.getMensagem(), null));
         }
 
         return ResponseEntity.ok(new ApiResponse(true, r.getMensagem(), new SolicitacaoResponse(r.getSolicitacao())));
+    }
+
+    @DeleteMapping("/solicitacoes/{id}")
+    public ResponseEntity<ApiResponse> excluir(@PathVariable Integer id, HttpServletRequest request) {
+        Usuario usuarioLogado = (Usuario) request.getAttribute(AuthInterceptor.USUARIO_LOGADO);
+        ResultadoOperacao r = solicitacoes.excluir(id, usuarioLogado);
+        if (!r.isSucesso()) {
+            HttpStatus status = r.getMensagem().contains("não encontrada")
+                    ? HttpStatus.NOT_FOUND
+                    : HttpStatus.FORBIDDEN;
+            return ResponseEntity.status(status).body(new ApiResponse(false, r.getMensagem(), null));
+        }
+
+        return ResponseEntity.ok(new ApiResponse(true, r.getMensagem(), null));
     }
 }

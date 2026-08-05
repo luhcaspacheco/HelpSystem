@@ -37,18 +37,18 @@ public class RespostaService {
     @Transactional
     public ResultadoOperacao responder(Integer solicitacaoId, RespostaRequest req, Usuario autor) {
         if (autor == null) {
-            return ResultadoOperacao.erro("Usuario logado nao encontrado.");
+            return ResultadoOperacao.erro("Usuário logado não encontrado.");
         }
         if (req == null || req.texto == null || req.texto.isBlank()) {
-            return ResultadoOperacao.erro("O texto da resposta e obrigatorio.");
+            return ResultadoOperacao.erro("O texto da resposta é obrigatório.");
         }
 
         Solicitacao solicitacao = solicitacaoRepository.findById(solicitacaoId).orElse(null);
         if (solicitacao == null) {
-            return ResultadoOperacao.erro("Solicitacao nao encontrada.");
+            return ResultadoOperacao.erro("Solicitação não encontrada.");
         }
         if (solicitacao.getStatus() == StatusSolicitacao.RESOLVIDA) {
-            return ResultadoOperacao.erro("Nao e possivel responder uma solicitacao resolvida.");
+            return ResultadoOperacao.erro("Não é possível responder a uma solicitação resolvida.");
         }
 
         Resposta resposta = respostaRepository.save(new Resposta(solicitacao, autor, req.texto.trim()));
@@ -69,7 +69,7 @@ public class RespostaService {
             return;
         }
 
-        String mensagem = "Sua solicitacao #" + solicitacao.getId() + " recebeu uma nova resposta.";
+        String mensagem = "Sua solicitação #" + solicitacao.getId() + " recebeu uma nova resposta.";
         notificacaoRepository.save(new Notificacao(autorSolicitacao, solicitacao, mensagem));
     }
 }

@@ -11,4 +11,6 @@ import java.util.List;
 public interface DepartamentoRepository extends JpaRepository<Departamento, Integer> {
 
     List<Departamento> findAllByOrderByNomeAsc();
+
+    boolean existsByNomeIgnoreCase(String nome);
 }

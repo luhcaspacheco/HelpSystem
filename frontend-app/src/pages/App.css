@@ -1,0 +1,6 @@
+.app-loading {
+  margin: 0;
+  padding: 48px;
+  color: var(--muted-text-color);
+  text-align: center;
+}

@@ -14,7 +14,12 @@ nbproject/
 # Sistema
 .DS_Store
 Thumbs.db
+hs_err_pid*.log
+replay_pid*.log
 
 # Arquivos locais sensiveis
 .env
 *.local
+
+# Copia local do repositorio original do frontend
+frontend/

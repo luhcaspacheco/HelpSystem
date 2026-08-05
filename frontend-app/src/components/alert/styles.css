@@ -1,0 +1,52 @@
+.alert-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 18px;
+  pointer-events: none;
+}
+
+.alert-box {
+  width: min(100%, 520px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 13px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--card-color);
+  color: var(--heading-color);
+  box-shadow: 0 12px 32px rgba(3, 45, 96, 0.14);
+  pointer-events: auto;
+}
+
+.alert-box.success {
+  border-color: #a7d7b7;
+  background: var(--success-soft-color);
+  color: var(--success-color);
+}
+
+.alert-box.error {
+  border-color: #efb3ba;
+  background: var(--danger-soft-color);
+  color: var(--danger-color);
+}
+
+.alert-box.info {
+  border-color: #a9ccef;
+  background: var(--primary-soft-color);
+  color: var(--primary-hover-color);
+}
+
+.alert-close {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+}

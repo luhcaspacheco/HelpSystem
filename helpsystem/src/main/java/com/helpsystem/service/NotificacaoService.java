@@ -39,19 +39,19 @@ public class NotificacaoService {
 
     public ResultadoOperacao marcarComoLida(Integer id, Usuario usuarioLogado) {
         if (usuarioLogado == null) {
-            return ResultadoOperacao.erro("Usuario logado nao encontrado.");
+            return ResultadoOperacao.erro("Usuário logado não encontrado.");
         }
 
         Notificacao notificacao = notificacaoRepository.findById(id).orElse(null);
         if (notificacao == null) {
-            return ResultadoOperacao.erro("Notificacao nao encontrada.");
+            return ResultadoOperacao.erro("Notificação não encontrada.");
         }
         if (notificacao.getUsuario() == null || notificacao.getUsuario().getId() != usuarioLogado.getId()) {
-            return ResultadoOperacao.erro("Voce nao tem permissao para alterar esta notificacao.");
+            return ResultadoOperacao.erro("Você não tem permissão para alterar esta notificação.");
         }
 
         notificacao.setLida(true);
         notificacaoRepository.save(notificacao);
-        return ResultadoOperacao.ok("Notificacao marcada como lida.", notificacao);
+        return ResultadoOperacao.ok("Notificação marcada como lida.", notificacao);
     }
 }

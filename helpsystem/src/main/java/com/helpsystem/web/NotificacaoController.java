@@ -41,7 +41,7 @@ public class NotificacaoController {
                 .map(NotificacaoResponse::new)
                 .toList();
 
-        return ResponseEntity.ok(new ApiResponse(true, "Notificacoes listadas com sucesso.", resposta));
+        return ResponseEntity.ok(new ApiResponse(true, "Notificações listadas com sucesso.", resposta));
     }
 
     @GetMapping("/notificacoes/nao-lidas/total")
@@ -49,7 +49,7 @@ public class NotificacaoController {
         Usuario usuarioLogado = (Usuario) request.getAttribute(AuthInterceptor.USUARIO_LOGADO);
         long total = notificacoes.contarNaoLidas(usuarioLogado);
 
-        return ResponseEntity.ok(new ApiResponse(true, "Total de notificacoes nao lidas.", new TotalNaoLidasResponse(total)));
+        return ResponseEntity.ok(new ApiResponse(true, "Total de notificações não lidas.", new TotalNaoLidasResponse(total)));
     }
 
     @PatchMapping("/notificacoes/{id}/lida")
@@ -57,7 +57,7 @@ public class NotificacaoController {
         Usuario usuarioLogado = (Usuario) request.getAttribute(AuthInterceptor.USUARIO_LOGADO);
         ResultadoOperacao r = notificacoes.marcarComoLida(id, usuarioLogado);
         if (!r.isSucesso()) {
-            HttpStatus status = r.getMensagem().contains("nao encontrada")
+            HttpStatus status = r.getMensagem().contains("não encontrada")
                     ? HttpStatus.NOT_FOUND
                     : HttpStatus.FORBIDDEN;
             return ResponseEntity.status(status).body(new ApiResponse(false, r.getMensagem(), null));

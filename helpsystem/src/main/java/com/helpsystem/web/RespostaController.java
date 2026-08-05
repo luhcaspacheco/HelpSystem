@@ -39,7 +39,7 @@ public class RespostaController {
     public ResponseEntity<ApiResponse> listar(@PathVariable Integer solicitacaoId) {
         if (solicitacoes.buscarPorId(solicitacaoId).isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body(new ApiResponse(false, "Solicitacao nao encontrada.", null));
+                    .body(new ApiResponse(false, "Solicitação não encontrada.", null));
         }
 
         List<RespostaResponse> resposta = respostas.listarPorSolicitacao(solicitacaoId).stream()
@@ -56,7 +56,7 @@ public class RespostaController {
         Usuario usuarioLogado = (Usuario) request.getAttribute(AuthInterceptor.USUARIO_LOGADO);
         ResultadoOperacao r = respostas.responder(solicitacaoId, req, usuarioLogado);
         if (!r.isSucesso()) {
-            HttpStatus status = r.getMensagem().contains("nao encontrada")
+            HttpStatus status = r.getMensagem().contains("não encontrada")
                     ? HttpStatus.NOT_FOUND
                     : HttpStatus.BAD_REQUEST;
             return ResponseEntity.status(status).body(new ApiResponse(false, r.getMensagem(), null));

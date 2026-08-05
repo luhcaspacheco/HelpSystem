@@ -1,0 +1,232 @@
+import { useEffect, useState } from 'react'
+import { Link, Outlet, useLocation, useNavigate } from 'react-router'
+import { Bell, Cloud, LogOut, X } from 'lucide-react'
+import './Layout.css'
+import api, { type ApiResponse } from '@/services/api'
+import { useUser } from '@contexts/userContext'
+
+type Notificacao = {
+  id: number
+  mensagem: string
+  lida: boolean
+  dataCriacao: string
+  solicitacaoId: number
+  solicitacaoTitulo: string
+}
+
+type TotalNaoLidas = {
+  total: number
+}
+
+function formatDateTime(value: string) {
+  return new Intl.DateTimeFormat('pt-BR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  }).format(new Date(value))
+}
+
+export default function Layout() {
+  const { user, logout, isLoading } = useUser()
+  const navigate = useNavigate()
+  const location = useLocation()
+  const isAuthPage = location.pathname === '/login' || location.pathname === '/cadastro'
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false)
+  const [notificacoes, setNotificacoes] = useState<Notificacao[]>([])
+  const [totalNaoLidas, setTotalNaoLidas] = useState(0)
+  const [isLoadingNotifications, setIsLoadingNotifications] = useState(false)
+  const [notificationError, setNotificationError] = useState('')
+
+  const navClass = (path: string) => {
+    return location.pathname === path ? 'layout-link active' : 'layout-link'
+  }
+
+  async function carregarTotalNaoLidas() {
+    if (!user) {
+      setTotalNaoLidas(0)
+      return
+    }
+
+    try {
+      const response = await api.get<ApiResponse<TotalNaoLidas>>('/notificacoes/nao-lidas/total')
+
+      if (response.data.sucesso) {
+        setTotalNaoLidas(response.data.dado.total)
+      }
+    } catch (error) {
+      console.error('Erro ao carregar total de notificações:', error)
+      setNotificationError('Não foi possível carregar o total de notificações.')
+    }
+  }
+
+  async function carregarNotificacoes() {
+    if (!user) return
+
+    setIsLoadingNotifications(true)
+    setNotificationError('')
+
+    try {
+      const response = await api.get<ApiResponse<Notificacao[]>>('/notificacoes')
+
+      if (response.data.sucesso) {
+        setNotificacoes(response.data.dado)
+      } else {
+        setNotificationError(response.data.mensagem)
+      }
+    } catch (error) {
+      console.error('Erro ao carregar notificações:', error)
+      setNotificationError('Não foi possível carregar as notificações. Confira se o login ainda está válido.')
+    } finally {
+      setIsLoadingNotifications(false)
+    }
+  }
+
+  async function abrirNotificacoes() {
+    setIsNotificationsOpen(true)
+    await carregarNotificacoes()
+    await carregarTotalNaoLidas()
+  }
+
+  async function marcarComoLida(id: number) {
+    try {
+      const response = await api.patch<ApiResponse<Notificacao>>(`/notificacoes/${id}/lida`)
+
+      if (response.data.sucesso) {
+        setNotificacoes((prev) => prev.map((item) => (item.id === id ? { ...item, lida: true } : item)))
+        setTotalNaoLidas((prev) => Math.max(prev - 1, 0))
+      }
+    } catch (error) {
+      console.error('Erro ao marcar notificação como lida:', error)
+      setNotificationError('Não foi possível marcar a notificação como lida.')
+    }
+  }
+
+  async function handleLogout() {
+    await logout()
+    setNotificacoes([])
+    setTotalNaoLidas(0)
+    setIsNotificationsOpen(false)
+    navigate('/login')
+  }
+
+  useEffect(() => {
+    carregarTotalNaoLidas()
+  }, [user])
+
+  return (
+    <div className={isAuthPage ? 'layout-container auth-layout' : 'layout-container'}>
+      {!isAuthPage && (
+        <nav className="layout-nav">
+          <Link className="layout-brand" to="/">
+            <span className="layout-mark"><Cloud aria-hidden="true" /></span>
+            <span>
+              <strong>Help System</strong>
+              <small>Specialisterne + Salesforce</small>
+            </span>
+          </Link>
+
+          <div className="layout-nav-center">
+            {user ? (
+              <>
+                <Link className={navClass('/solicitacoes')} to="/solicitacoes">
+                  Solicitações
+                </Link>
+                {user.admin && (
+                  <Link className={navClass('/admin')} to="/admin">
+                    Admin
+                  </Link>
+                )}
+              </>
+            ) : (
+              <>
+                <Link className={navClass('/cadastro')} to="/cadastro">
+                  Cadastro
+                </Link>
+                <Link className={navClass('/login')} to="/login">
+                  Login
+                </Link>
+              </>
+            )}
+          </div>
+
+          <div className="layout-nav-actions">
+            {user ? (
+              <>
+                <span className="layout-user-label">
+                  <strong>{user.nome}</strong>
+                  <small>{user.admin ? 'Administrador' : 'Colaborador'}</small>
+                </span>
+                <button
+                  type="button"
+                  className="layout-button notification-trigger"
+                  aria-label="Notificações"
+                  onClick={abrirNotificacoes}
+                  disabled={isLoadingNotifications}
+                >
+                  <Bell aria-hidden="true" />
+                  {totalNaoLidas > 0 && <span className="notification-badge">{totalNaoLidas}</span>}
+                </button>
+                <button type="button" className="layout-button" onClick={handleLogout} disabled={isLoading}>
+                  <LogOut aria-hidden="true" />
+                  Sair
+                </button>
+              </>
+            ) : (
+              <Link className="layout-button dark" to="/login">
+                Entrar
+              </Link>
+            )}
+          </div>
+        </nav>
+      )}
+
+      <section className="layout-workspace">
+        <main className="layout-main">
+          <Outlet />
+        </main>
+      </section>
+
+      {isNotificationsOpen && (
+        <div className="layout-modal-backdrop" onClick={() => setIsNotificationsOpen(false)}>
+          <div className="notifications-modal" onClick={(event) => event.stopPropagation()}>
+            <div className="notifications-header">
+              <div>
+                <h2>Notificações</h2>
+                <p>Acompanhe atualizações das suas solicitações.</p>
+              </div>
+              <button type="button" className="modal-close-button" onClick={() => setIsNotificationsOpen(false)}>
+                <X aria-hidden="true" />
+                <span className="sr-only">Fechar</span>
+              </button>
+            </div>
+
+            <div className="notifications-list">
+              {notificationError && <p className="notification-error">{notificationError}</p>}
+              {isLoadingNotifications && <p className="notification-empty">Carregando notificações...</p>}
+              {!isLoadingNotifications && notificacoes.length === 0 && (
+                <p className="notification-empty">Nenhuma notificação encontrada.</p>
+              )}
+              {!isLoadingNotifications &&
+                notificacoes.map((notificacao) => (
+                  <article className={`notification-item ${notificacao.lida ? 'read' : 'unread'}`} key={notificacao.id}>
+                    <div>
+                      <strong>{notificacao.solicitacaoTitulo}</strong>
+                      <p>{notificacao.mensagem}</p>
+                      <span>{formatDateTime(notificacao.dataCriacao)}</span>
+                    </div>
+                    {!notificacao.lida && (
+                      <button type="button" className="mark-read-button" onClick={() => marcarComoLida(notificacao.id)}>
+                        Marcar como lida
+                      </button>
+                    )}
+                  </article>
+                ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}

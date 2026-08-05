@@ -2,6 +2,7 @@ package com.helpsystem.service;
 
 import com.helpsystem.model.Usuario;
 import com.helpsystem.model.Categoria;
+import com.helpsystem.model.Departamento;
 import com.helpsystem.model.Notificacao;
 import com.helpsystem.model.Resposta;
 import com.helpsystem.model.Solicitacao;
@@ -48,6 +49,10 @@ public class ResultadoOperacao {
 
     public Categoria getCategoria() {
         return (dado instanceof Categoria) ? (Categoria) dado : null;
+    }
+
+    public Departamento getDepartamento() {
+        return (dado instanceof Departamento) ? (Departamento) dado : null;
     }
 
     public Solicitacao getSolicitacao() {
