@@ -99,8 +99,9 @@ public class SolicitacaoService {
         if (solicitacao == null) {
             return ResultadoOperacao.erro("Solicitacao nao encontrada.");
         }
-        if (solicitacao.getAutor() == null || solicitacao.getAutor().getId() != usuarioLogado.getId()) {
-            return ResultadoOperacao.erro("Apenas o autor pode marcar a solicitacao como resolvida.");
+        boolean usuarioEhAutor = solicitacao.getAutor() != null && solicitacao.getAutor().getId() == usuarioLogado.getId();
+        if (!usuarioEhAutor && !usuarioLogado.isAdmin()) {
+            return ResultadoOperacao.erro("Apenas o autor ou um admin pode marcar a solicitacao como resolvida.");
         }
         if (solicitacao.getStatus() == StatusSolicitacao.RESOLVIDA) {
             return ResultadoOperacao.erro("A solicitacao ja esta resolvida.");
