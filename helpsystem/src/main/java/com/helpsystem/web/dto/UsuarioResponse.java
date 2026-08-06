@@ -14,6 +14,7 @@ public class UsuarioResponse {
     public String tipo;
     public boolean admin;
     public boolean ativo;
+    public String departamento;
 
     public UsuarioResponse(Usuario u) {
         TipoUsuario tipoUsuario = u.getTipo() != null ? u.getTipo() : TipoUsuario.COMUM;
@@ -24,5 +25,6 @@ public class UsuarioResponse {
         this.tipo = tipoUsuario.name();
         this.admin = tipoUsuario == TipoUsuario.ADMIN;
         this.ativo = u.isAtivo();
+        this.departamento = u.getDepartamento() != null ? u.getDepartamento().getNome() : null;
     }
 }

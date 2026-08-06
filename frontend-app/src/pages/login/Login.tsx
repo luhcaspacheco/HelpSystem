@@ -53,21 +53,21 @@ export default function Login() {
       <main className="auth-main">
         <section className="auth-intro">
           <span className="auth-intro-mark"><MessageSquare aria-hidden="true" /></span>
-          <p className="auth-intro-eyebrow">Central de serviços internos</p>
-          <h2>Controle cada solicitação com contexto, prioridade e histórico.</h2>
-          <p>Centralize o atendimento entre colaboradores e equipes responsáveis, com visibilidade de cada etapa até a resolução.</p>
+          <p className="auth-intro-eyebrow">Fórum interno de ajuda</p>
+          <h2>Pergunte, responda e resolva junto com a equipe.</h2>
+          <p>Publique sua dúvida ou problema e receba respostas de outros colaboradores. O que é resolvido fica registrado para todo mundo consultar.</p>
           <div className="auth-feature-list">
             <div className="auth-feature-item">
               <span className="auth-feature-icon"><ClipboardList aria-hidden="true" /></span>
-              <span><strong>Solicitações organizadas</strong><small>Categoria, prioridade e status em um único fluxo.</small></span>
+              <span><strong>Pergunte à comunidade</strong><small>Descreva o problema com categoria e prioridade.</small></span>
             </div>
             <div className="auth-feature-item">
               <span className="auth-feature-icon"><BellRing aria-hidden="true" /></span>
-              <span><strong>Acompanhamento contínuo</strong><small>Notificações sobre respostas e atualizações importantes.</small></span>
+              <span><strong>Respostas de colegas</strong><small>Quem já passou por isso ajuda a resolver.</small></span>
             </div>
             <div className="auth-feature-item">
               <span className="auth-feature-icon"><History aria-hidden="true" /></span>
-              <span><strong>Histórico centralizado</strong><small>Conversas e resoluções preservadas para consulta.</small></span>
+              <span><strong>Conhecimento que fica</strong><small>Perguntas e respostas guardadas para consultar depois.</small></span>
             </div>
           </div>
         </section>

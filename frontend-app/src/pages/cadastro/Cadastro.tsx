@@ -106,21 +106,21 @@ export default function Cadastro() {
       <main className="auth-main cadastro-main">
         <section className="auth-intro">
           <span className="auth-intro-mark"><UserPlus aria-hidden="true" /></span>
-          <p className="auth-intro-eyebrow">Acesso à central corporativa</p>
-          <h2>Um canal único para registrar, acompanhar e resolver solicitações internas.</h2>
-          <p>Crie seu acesso para direcionar pedidos às equipes responsáveis e acompanhar cada atendimento com clareza.</p>
+          <p className="auth-intro-eyebrow">Faça parte do fórum</p>
+          <h2>Um espaço para tirar dúvidas e ajudar colegas.</h2>
+          <p>Crie seu acesso para publicar perguntas, responder outros colaboradores e acompanhar cada solução até o fim.</p>
           <div className="auth-feature-list">
             <div className="auth-feature-item">
               <span className="auth-feature-icon"><ClipboardList aria-hidden="true" /></span>
-              <span><strong>Abertura estruturada</strong><small>Informe categoria e prioridade para agilizar o direcionamento.</small></span>
+              <span><strong>Abra sua dúvida</strong><small>Publique um problema em poucos passos.</small></span>
             </div>
             <div className="auth-feature-item">
               <span className="auth-feature-icon"><BellRing aria-hidden="true" /></span>
-              <span><strong>Atualizações visíveis</strong><small>Acompanhe respostas, mudanças de status e conclusões.</small></span>
+              <span><strong>Ajude quem precisa</strong><small>Responda colegas e compartilhe o que sabe.</small></span>
             </div>
             <div className="auth-feature-item">
               <span className="auth-feature-icon"><History aria-hidden="true" /></span>
-              <span><strong>Comunicação registrada</strong><small>Mantenha todo o contexto da solicitação no mesmo histórico.</small></span>
+              <span><strong>Fique por dentro</strong><small>Notificações quando responderem você.</small></span>
             </div>
           </div>
         </section>

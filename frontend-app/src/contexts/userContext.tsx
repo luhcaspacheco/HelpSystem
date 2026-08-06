@@ -6,6 +6,7 @@ export interface User {
   nome: string
   email: string
   depId?: number
+  departamento?: string
   tipo?: string
   admin: boolean
   ativo?: boolean

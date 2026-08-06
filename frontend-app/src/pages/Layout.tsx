@@ -156,7 +156,10 @@ export default function Layout() {
               <>
                 <span className="layout-user-label">
                   <strong>{user.nome}</strong>
-                  <small>{user.admin ? 'Administrador' : 'Colaborador'}</small>
+                  <small>
+                    {user.admin ? 'Administrador' : 'Colaborador'}
+                    {user.departamento ? ` · ${user.departamento}` : ''}
+                  </small>
                 </span>
                 <button
                   type="button"

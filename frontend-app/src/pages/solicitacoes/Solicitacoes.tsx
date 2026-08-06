@@ -21,6 +21,7 @@ type Solicitacao = {
   dataResolucao: string | null
   autorId: number
   autorNome: string
+  autorDepartamento: string | null
   categoriaId: number
   categoriaNome: string
 }
@@ -738,6 +739,7 @@ export default function Solicitacoes() {
                 <h3>Detalhes</h3>
                 <dl>
                   <div><dt>Solicitante</dt><dd>{selectedSolicitacao.autorNome}</dd></div>
+                  <div><dt>Departamento</dt><dd>{selectedSolicitacao.autorDepartamento ?? '—'}</dd></div>
                   <div><dt>Categoria</dt><dd>{selectedSolicitacao.categoriaNome}</dd></div>
                   <div><dt>Criada em</dt><dd>{formatDateTime(selectedSolicitacao.dataCriacao)}</dd></div>
                   {selectedSolicitacao.dataResolucao && (
