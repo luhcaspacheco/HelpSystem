@@ -32,7 +32,10 @@ export default function Layout() {
   const { user, logout, isLoading } = useUser()
   const navigate = useNavigate()
   const location = useLocation()
-  const isAuthPage = location.pathname === '/login' || location.pathname === '/cadastro'
+  const isAuthPage =
+    location.pathname === '/login' ||
+    location.pathname === '/cadastro' ||
+    location.pathname === '/recuperar-senha'
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false)
   const [notificacoes, setNotificacoes] = useState<Notificacao[]>([])
   const [totalNaoLidas, setTotalNaoLidas] = useState(0)
