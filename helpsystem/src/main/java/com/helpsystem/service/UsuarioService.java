@@ -38,6 +38,9 @@ public class UsuarioService {
         if (senhaPura == null || senhaPura.isBlank()) {
             return ResultadoOperacao.erro("A senha é obrigatória.");
         }
+        if (senhaPura.length() < 8) {
+            return ResultadoOperacao.erro("A senha deve ter no mínimo 8 caracteres.");
+        }
         if (departamento == null || departamento.getId() <= 0) {
             return ResultadoOperacao.erro("O departamento é obrigatório.");
         }

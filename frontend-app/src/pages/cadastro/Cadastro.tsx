@@ -62,9 +62,12 @@ export default function Cadastro() {
     event.preventDefault()
     const isEmailValid = emailRegex.test(email)
 
+    const isSenhaValid = senha.length >= 8
+
     if (!nome) setNomeError('Este campo é obrigatório.')
     if (!email) setEmailError('Este campo é obrigatório.')
     if (!senha) setSenhaError('Este campo é obrigatório.')
+    else if (!isSenhaValid) setSenhaError('A senha deve ter no mínimo 8 caracteres.')
     if (!dep) setDepError('Selecione um departamento válido.')
 
     if (email && !isEmailValid) {
@@ -72,7 +75,7 @@ export default function Cadastro() {
       return
     }
 
-    if (email && senha && nome && dep && isEmailValid) {
+    if (email && senha && isSenhaValid && nome && dep && isEmailValid) {
       const result = await addUser(nome, email, senha, Number(dep))
       const isSuccess = result.toLowerCase().includes('sucesso')
 
