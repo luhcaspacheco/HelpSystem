@@ -132,7 +132,8 @@ public class SolicitacaoService {
             return ResultadoOperacao.erro("Não é possível editar uma solicitação já resolvida.");
         }
 
-        // Valida todos os campos obrigatórios de uma vez (acusa todos os pendentes).
+        // Na edição pode-se alterar título, descrição, categoria e prioridade.
+        // O status NÃO é alterado aqui (muda apenas ao responder/finalizar).
         List<String> erros = validarCampos(req);
         if (!erros.isEmpty()) {
             return ResultadoOperacao.erro(String.join(" ", erros));

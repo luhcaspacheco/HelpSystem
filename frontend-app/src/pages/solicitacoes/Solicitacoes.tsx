@@ -216,6 +216,7 @@ export default function Solicitacoes() {
       }
 
       // Editando uma solicitação existente (PUT) ou criando uma nova (POST).
+      // Em ambos, o status não é alterado por aqui.
       const response = editingId
         ? await api.put<ApiResponse<Solicitacao>>(`/solicitacoes/${editingId}`, payload)
         : await api.post<ApiResponse<Solicitacao>>('/solicitacoes', payload)
