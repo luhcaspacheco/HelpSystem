@@ -122,7 +122,7 @@ export default function Login() {
               {senhaError && <small>{senhaError}</small>}
             </label>
 
-            <a className="forgot-password" href="#recuperar-senha">Esqueci minha senha</a>
+            <Link className="forgot-password" to="/recuperar-senha">Esqueci minha senha</Link>
 
             <button className="login-submit" type="submit" disabled={isLoading}>
               {isLoading ? 'Entrando...' : 'Entrar'}

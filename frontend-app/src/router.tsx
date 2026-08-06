@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router'
 import Layout from './pages/Layout'
 import Cadastro from './pages/cadastro/Cadastro.tsx'
 import Login from './pages/login/Login.tsx'
+import RecuperarSenha from './pages/recuperar/RecuperarSenha.tsx'
 import App from './pages/App.tsx'
 import Solicitacoes from './pages/solicitacoes/Solicitacoes.tsx'
 import Admin from './pages/admin/Admin.tsx'
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login />
+      },
+      {
+        path: '/recuperar-senha',
+        element: <RecuperarSenha />
       },
       {
         path: '/solicitacoes',
