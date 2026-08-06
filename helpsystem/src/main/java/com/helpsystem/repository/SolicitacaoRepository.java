@@ -1,8 +1,10 @@
 package com.helpsystem.repository;
 
+import com.helpsystem.model.Categoria;
 import com.helpsystem.model.Solicitacao;
 import com.helpsystem.model.enums.StatusSolicitacao;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import java.util.List;
@@ -12,6 +14,11 @@ import java.util.List;
 public interface SolicitacaoRepository extends JpaRepository<Solicitacao, Integer> {
 
     List<Solicitacao> findAllByOrderByDataCriacaoDesc();
+
+    // Move todas as solicitações de uma categoria para outra (usado ao excluir uma categoria).
+    @Modifying
+    @Query("update Solicitacao s set s.categoria = :destino where s.categoria.id = :origemId")
+    int reatribuirCategoria(Integer origemId, Categoria destino);
 
     List<Solicitacao> findByStatusOrderByDataCriacaoDesc(StatusSolicitacao status);
 

@@ -184,7 +184,7 @@ export default function Admin() {
   }
 
   const excluirCategoria = async (categoria: Categoria) => {
-    if (!window.confirm(`Deseja excluir a categoria "${categoria.nome}"?`)) return
+    if (!window.confirm(`Deseja excluir a categoria "${categoria.nome}"? As solicitações associadas serão movidas para "Outros".`)) return
 
     setIsCatalogSaving(true)
     try {
@@ -361,15 +361,23 @@ export default function Admin() {
           <div className="admin-list">
             {isCatalogLoading && <p>Carregando...</p>}
             {!isCatalogLoading &&
-              categorias.map((item) => (
-                <div className="admin-list-item" key={item.id}>
-                  <span>{item.nome}</span>
-                  <button type="button" onClick={() => excluirCategoria(item)} disabled={isCatalogSaving}>
-                    <Trash2 aria-hidden="true" />
-                    Excluir
-                  </button>
-                </div>
-              ))}
+              categorias.map((item) => {
+                const isPadrao = item.nome.trim().toLowerCase() === 'outros'
+                return (
+                  <div className="admin-list-item" key={item.id}>
+                    <span>{item.nome}{isPadrao && ' (padrão)'}</span>
+                    <button
+                      type="button"
+                      onClick={() => excluirCategoria(item)}
+                      disabled={isCatalogSaving || isPadrao}
+                      title={isPadrao ? 'Categoria padrão — não pode ser excluída' : undefined}
+                    >
+                      <Trash2 aria-hidden="true" />
+                      Excluir
+                    </button>
+                  </div>
+                )
+              })}
           </div>
         </div>
 
