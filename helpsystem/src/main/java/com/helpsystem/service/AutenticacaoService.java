@@ -19,6 +19,9 @@ public class AutenticacaoService {
         if (email == null || email.isBlank() || senha == null || senha.isBlank()) {
             return ResultadoOperacao.erro("Informe e-mail e senha.");
         }
+        if (!email.trim().toLowerCase().contains("@helpsystem.")) {
+            return ResultadoOperacao.erro("Acesso permitido apenas com e-mail corporativo do domínio @helpsystem.");
+        }
 
         Usuario usuario = usuarioRepository.findByEmail(email.trim().toLowerCase()).orElse(null);
 

@@ -129,16 +129,16 @@ export default function Layout() {
 
           <div className="layout-nav-center">
             {user ? (
-              <>
-                <Link className={navClass('/solicitacoes')} to="/solicitacoes">
-                  Solicitações
-                </Link>
-                {user.admin && (
+              user.admin ? (
+                <>
+                  <Link className={navClass('/solicitacoes')} to="/solicitacoes">
+                    Solicitações
+                  </Link>
                   <Link className={navClass('/admin')} to="/admin">
                     Admin
                   </Link>
-                )}
-              </>
+                </>
+              ) : null
             ) : (
               <>
                 <Link className={navClass('/cadastro')} to="/cadastro">

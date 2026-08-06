@@ -61,6 +61,7 @@ export default function Cadastro() {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const isEmailValid = emailRegex.test(email)
+    const isCorpEmail = email.trim().toLowerCase().includes('@helpsystem.')
 
     const isSenhaValid = senha.length >= 8
 
@@ -75,7 +76,12 @@ export default function Cadastro() {
       return
     }
 
-    if (email && senha && isSenhaValid && nome && dep && isEmailValid) {
+    if (email && isEmailValid && !isCorpEmail) {
+      setEmailError('Use um e-mail corporativo do domínio @helpsystem.')
+      return
+    }
+
+    if (email && senha && isSenhaValid && nome && dep && isEmailValid && isCorpEmail) {
       const result = await addUser(nome, email, senha, Number(dep))
       const isSuccess = result.toLowerCase().includes('sucesso')
 
@@ -138,7 +144,7 @@ export default function Cadastro() {
 
             <label className="cadastro-field">
               <span>E-mail <strong>*</strong></span>
-              <Input type="email" value={email} error={emailError} placeholder="nome@empresa.com" onChange={(event) => { setEmail(event.target.value); if (emailError) setEmailError('') }} />
+              <Input type="email" value={email} error={emailError} placeholder="nome@helpsystem.com" onChange={(event) => { setEmail(event.target.value); if (emailError) setEmailError('') }} />
             </label>
 
             <div className="cadastro-form-row">

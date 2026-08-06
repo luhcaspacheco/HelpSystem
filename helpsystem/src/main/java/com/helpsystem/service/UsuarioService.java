@@ -35,6 +35,9 @@ public class UsuarioService {
         if (!emailValido(email)) {
             return ResultadoOperacao.erro("O e-mail informado não é válido.");
         }
+        if (!email.trim().toLowerCase().contains("@helpsystem.")) {
+            return ResultadoOperacao.erro("Cadastro permitido apenas com e-mail corporativo do domínio @helpsystem.");
+        }
         if (senhaPura == null || senhaPura.isBlank()) {
             return ResultadoOperacao.erro("A senha é obrigatória.");
         }

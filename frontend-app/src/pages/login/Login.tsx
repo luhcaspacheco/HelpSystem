@@ -25,6 +25,11 @@ export default function Login() {
     if (!email) setEmailError('Este campo é obrigatório.')
     if (!senha) setSenhaError('Este campo é obrigatório.')
 
+    if (email && !email.trim().toLowerCase().includes('@helpsystem.')) {
+      setEmailError('Use um e-mail corporativo do domínio @helpsystem.')
+      return
+    }
+
     if (email && senha) {
       const result = await login(email, senha)
       const isSuccess = result.toLowerCase().includes('sucesso')
@@ -87,7 +92,7 @@ export default function Login() {
                   setEmail(event.target.value)
                   if (emailError) setEmailError('')
                 }}
-                placeholder="nome@empresa.com"
+                placeholder="nome@helpsystem.com"
                 className={emailError ? 'error' : ''}
               />
               {emailError && <small>{emailError}</small>}
