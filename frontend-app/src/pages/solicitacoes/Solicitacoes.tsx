@@ -5,6 +5,7 @@ import Button from '@components/button'
 import Alert from '@components/alert'
 import api, { type ApiResponse } from '@/services/api'
 import { useUser } from '@/contexts/userContext'
+import { formatDate, formatDateTime } from '@/utils/datetime'
 
 type Categoria = { id: number; nome: string }
 type Prioridade = 'BAIXA' | 'MEDIA' | 'ALTA'
@@ -77,23 +78,7 @@ const initialFiltrosData: FiltrosData = {
   ordenarPor: 'data'
 }
 
-function formatDate(value: string) {
-  return new Intl.DateTimeFormat('pt-BR', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric'
-  }).format(new Date(value))
-}
-
-function formatDateTime(value: string) {
-  return new Intl.DateTimeFormat('pt-BR', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit'
-  }).format(new Date(value))
-}
+// formatDate e formatDateTime vêm de '@/utils/datetime' (exibem em horário de Brasília).
 
 export default function Solicitacoes() {
   const { token, user } = useUser()

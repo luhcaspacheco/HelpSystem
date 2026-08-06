@@ -4,6 +4,7 @@ import { Bell, Cloud, LogOut, X } from 'lucide-react'
 import './Layout.css'
 import api, { type ApiResponse } from '@/services/api'
 import { useUser } from '@contexts/userContext'
+import { formatDateTime } from '@/utils/datetime'
 
 type Notificacao = {
   id: number
@@ -16,16 +17,6 @@ type Notificacao = {
 
 type TotalNaoLidas = {
   total: number
-}
-
-function formatDateTime(value: string) {
-  return new Intl.DateTimeFormat('pt-BR', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit'
-  }).format(new Date(value))
 }
 
 export default function Layout() {
