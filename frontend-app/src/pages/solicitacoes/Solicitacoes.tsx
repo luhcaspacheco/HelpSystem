@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState, type FormEvent } from 'react'
-import { CheckCircle2, ChevronLeft, ChevronRight, Plus, Send, Trash2, X } from 'lucide-react'
+import { CheckCircle2, ChevronLeft, ChevronRight, Pencil, Plus, Send, Trash2, X } from 'lucide-react'
 import './Solicitacoes.css'
 import Button from '@components/button'
 import Alert from '@components/alert'
@@ -109,6 +109,7 @@ export default function Solicitacoes() {
   const [alertMessage, setAlertMessage] = useState('')
   const [alertType, setAlertType] = useState<'success' | 'error' | 'info'>('info')
   const [formData, setFormData] = useState<FormData>(initialFormData)
+  const [editingId, setEditingId] = useState<number | null>(null)
   const [filtros, setFiltros] = useState<FiltrosData>(initialFiltrosData)
   const [paginaAtual, setPaginaAtual] = useState(1)
   const [itensPorPagina, setItensPorPagina] = useState(5)
@@ -203,25 +204,21 @@ export default function Solicitacoes() {
       return
     }
 
-    const camposFaltando: string[] = []
-    if (!formData.titulo.trim()) camposFaltando.push('título')
-    if (!formData.categoriaId) camposFaltando.push('categoria')
-    if (!formData.descricao.trim()) camposFaltando.push('descrição')
-
-    if (camposFaltando.length > 0) {
-      setAlertType('error')
-      setAlertMessage(`Preencha: ${camposFaltando.join(', ')}.`)
-      return
-    }
-
+    // Opção B: a validação dos campos fica a cargo do backend, que retorna
+    // a mensagem exata (somente os campos realmente vazios).
     setIsSaving(true)
     try {
-      const response = await api.post<ApiResponse<Solicitacao>>('/solicitacoes', {
+      const payload = {
         titulo: formData.titulo,
         descricao: formData.descricao,
         categoriaId: Number(formData.categoriaId),
         prioridade: formData.prioridade
-      })
+      }
+
+      // Editando uma solicitação existente (PUT) ou criando uma nova (POST).
+      const response = editingId
+        ? await api.put<ApiResponse<Solicitacao>>(`/solicitacoes/${editingId}`, payload)
+        : await api.post<ApiResponse<Solicitacao>>('/solicitacoes', payload)
 
       if (!response.data.sucesso) {
         setAlertType('error')
@@ -231,13 +228,17 @@ export default function Solicitacoes() {
 
       await carregarSolicitacoes()
       setFormData(initialFormData)
+      setEditingId(null)
       setIsFormOpen(false)
       setAlertType('success')
       setAlertMessage(response.data.mensagem)
     } catch (error) {
-      console.error('Erro ao criar solicitação:', error)
+      console.error('Erro ao salvar solicitação:', error)
       setAlertType('error')
-      setAlertMessage('Não foi possível criar a solicitação.')
+      const mensagem =
+        (error as { response?: { data?: { mensagem?: string } } })?.response?.data?.mensagem
+        ?? (editingId ? 'Não foi possível editar a solicitação.' : 'Não foi possível criar a solicitação.')
+      setAlertMessage(mensagem)
     } finally {
       setIsSaving(false)
     }
@@ -315,6 +316,22 @@ export default function Solicitacoes() {
     return user?.id === solicitacao.autorId
   }
 
+  const podeEditar = (solicitacao: Solicitacao) => {
+    return user?.id === solicitacao.autorId && solicitacao.status !== 'RESOLVIDA'
+  }
+
+  const abrirEdicao = (solicitacao: Solicitacao) => {
+    setEditingId(solicitacao.id)
+    setFormData({
+      titulo: solicitacao.titulo,
+      categoriaId: String(solicitacao.categoriaId),
+      prioridade: solicitacao.prioridade,
+      descricao: solicitacao.descricao
+    })
+    setSelectedSolicitacao(null)
+    setIsFormOpen(true)
+  }
+
   const finalizarSolicitacao = async (solicitacao: Solicitacao) => {
     try {
       const response = await api.patch<ApiResponse<Solicitacao>>(`/solicitacoes/${solicitacao.id}/resolver`)
@@ -370,7 +387,7 @@ export default function Solicitacoes() {
           <h1>Solicitações</h1>
           <p className="subtitle">Acompanhe o status de cada pedido de forma rápida e organizada.</p>
         </div>
-        <Button type="button" onClick={() => setIsFormOpen(true)} disabled={!token}>
+        <Button type="button" onClick={() => { setEditingId(null); setFormData(initialFormData); setIsFormOpen(true) }} disabled={!token}>
           <Plus aria-hidden="true" />
           Nova solicitação
         </Button>
@@ -548,10 +565,10 @@ export default function Solicitacoes() {
       )}
 
       {isFormOpen && (
-        <div className="modal-backdrop" onClick={() => setIsFormOpen(false)}>
+        <div className="modal-backdrop" onClick={() => { setIsFormOpen(false); setEditingId(null) }}>
           <div className="modal-card" onClick={(event) => event.stopPropagation()}>
-            <h2>Nova solicitação</h2>
-            <p>Preencha os detalhes para criar um novo pedido.</p>
+            <h2>{editingId ? 'Editar solicitação' : 'Nova solicitação'}</h2>
+            <p>{editingId ? 'Atualize os dados da solicitação.' : 'Preencha os detalhes para criar um novo pedido.'}</p>
             <form className="request-form" onSubmit={handleSubmit}>
               <label className="form-group">
                 <span>Título</span>
@@ -599,12 +616,12 @@ export default function Solicitacoes() {
                 />
               </label>
               <div className="form-actions">
-                <button type="button" className="secondary-button" onClick={() => setIsFormOpen(false)}>
+                <button type="button" className="secondary-button" onClick={() => { setIsFormOpen(false); setEditingId(null) }}>
                   Cancelar
                 </button>
                 <Button type="submit" disabled={isSaving}>
-                  <Plus aria-hidden="true" />
-                  {isSaving ? 'Salvando...' : 'Salvar'}
+                  {editingId ? <Pencil aria-hidden="true" /> : <Plus aria-hidden="true" />}
+                  {isSaving ? 'Salvando...' : editingId ? 'Salvar alterações' : 'Salvar'}
                 </Button>
               </div>
             </form>
@@ -663,6 +680,16 @@ export default function Solicitacoes() {
                       />
                     </label>
                     <div className="form-actions">
+                      {podeEditar(selectedSolicitacao) && (
+                        <button
+                          type="button"
+                          className="secondary-button"
+                          onClick={() => abrirEdicao(selectedSolicitacao)}
+                        >
+                          <Pencil aria-hidden="true" />
+                          Editar
+                        </button>
+                      )}
                       {podeExcluir(selectedSolicitacao) && (
                         <button
                           type="button"

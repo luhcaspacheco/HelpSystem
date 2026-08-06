@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState, type FormEvent } from 'react'
-import { ChevronLeft, ChevronRight, Plus, RefreshCw, Trash2, UserMinus, UserPlus, UserX, X } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Plus, RefreshCw, Trash2, UserCheck, UserMinus, UserPlus, UserX, X } from 'lucide-react'
 import Alert from '@components/alert'
 import api, { type ApiResponse } from '@/services/api'
 import { useUser } from '@/contexts/userContext'
@@ -269,6 +269,28 @@ export default function Admin() {
     }
   }
 
+  const reativarUsuario = async (usuarioId: number) => {
+    if (!window.confirm('Deseja reativar este usuário?')) return
+
+    setSavingId(usuarioId)
+    try {
+      const response = await api.patch<ApiResponse<UsuarioAdmin>>(`/usuarios/${usuarioId}/reativar`)
+      if (response.data.sucesso) {
+        atualizarUsuario(response.data.dado)
+        setAlertType('success')
+      } else {
+        setAlertType('error')
+      }
+      setAlertMessage(response.data.mensagem)
+    } catch (error) {
+      console.error('Erro ao reativar usuário:', error)
+      setAlertType('error')
+      setAlertMessage('Não foi possível reativar o usuário.')
+    } finally {
+      setSavingId(null)
+    }
+  }
+
   if (!user?.admin) {
     return (
       <main className="admin-page">
@@ -458,15 +480,27 @@ export default function Admin() {
                             Rebaixar
                           </button>
                         )}
-                        <button
-                          type="button"
-                          className="danger"
-                          onClick={() => excluirUsuario(item.id)}
-                          disabled={isSaving || !item.ativo || isSelf}
-                        >
-                          <UserX aria-hidden="true" />
-                          Desativar
-                        </button>
+                        {item.ativo ? (
+                          <button
+                            type="button"
+                            className="danger"
+                            onClick={() => excluirUsuario(item.id)}
+                            disabled={isSaving || isSelf}
+                          >
+                            <UserX aria-hidden="true" />
+                            Desativar
+                          </button>
+                        ) : (
+                          <button
+                            type="button"
+                            className="success"
+                            onClick={() => reativarUsuario(item.id)}
+                            disabled={isSaving}
+                          >
+                            <UserCheck aria-hidden="true" />
+                            Ativar
+                          </button>
+                        )}
                       </div>
                     </td>
                   </tr>

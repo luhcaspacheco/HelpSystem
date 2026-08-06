@@ -366,6 +366,11 @@
   color: var(--danger-color);
 }
 
+.admin-actions .success {
+  border-color: #a9d8b8;
+  color: var(--success-color);
+}
+
 .admin-empty {
   margin: 0;
   padding: 24px;
