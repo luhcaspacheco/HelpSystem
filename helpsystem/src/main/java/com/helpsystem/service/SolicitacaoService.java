@@ -14,6 +14,7 @@ import com.helpsystem.web.dto.SolicitacaoRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -74,14 +75,11 @@ public class SolicitacaoService {
         if (req == null) {
             return ResultadoOperacao.erro("Informe os dados da solicitação.");
         }
-        if (req.titulo == null || req.titulo.isBlank()) {
-            return ResultadoOperacao.erro("O título é obrigatório.");
-        }
-        if (req.descricao == null || req.descricao.isBlank()) {
-            return ResultadoOperacao.erro("A descrição é obrigatória.");
-        }
-        if (req.categoriaId == null || req.categoriaId <= 0) {
-            return ResultadoOperacao.erro("A categoria é obrigatória.");
+
+        // Valida todos os campos obrigatórios de uma vez (acusa todos os pendentes).
+        List<String> erros = validarCampos(req);
+        if (!erros.isEmpty()) {
+            return ResultadoOperacao.erro(String.join(" ", erros));
         }
 
         Categoria categoria = categoriaRepository.findById(req.categoriaId).orElse(null);
@@ -108,6 +106,58 @@ public class SolicitacaoService {
 
         solicitacaoRepository.save(solicitacao);
         return ResultadoOperacao.ok("Solicitação criada com sucesso!", solicitacao);
+    }
+
+    /**
+     * Edita uma solicitação existente. Somente o autor pode editar e apenas
+     * enquanto a solicitação não estiver resolvida.
+     */
+    public ResultadoOperacao editar(Integer id, SolicitacaoRequest req, Usuario usuarioLogado) {
+        if (usuarioLogado == null) {
+            return ResultadoOperacao.erro("Usuário logado não encontrado.");
+        }
+        if (req == null) {
+            return ResultadoOperacao.erro("Informe os dados da solicitação.");
+        }
+
+        Solicitacao solicitacao = buscarPorId(id).orElse(null);
+        if (solicitacao == null) {
+            return ResultadoOperacao.erro("Solicitação não encontrada.");
+        }
+        boolean usuarioEhAutor = solicitacao.getAutor() != null && solicitacao.getAutor().getId() == usuarioLogado.getId();
+        if (!usuarioEhAutor) {
+            return ResultadoOperacao.erro("Apenas o autor pode editar a própria solicitação.");
+        }
+        if (solicitacao.getStatus() == StatusSolicitacao.RESOLVIDA) {
+            return ResultadoOperacao.erro("Não é possível editar uma solicitação já resolvida.");
+        }
+
+        // Valida todos os campos obrigatórios de uma vez (acusa todos os pendentes).
+        List<String> erros = validarCampos(req);
+        if (!erros.isEmpty()) {
+            return ResultadoOperacao.erro(String.join(" ", erros));
+        }
+
+        Categoria categoria = categoriaRepository.findById(req.categoriaId).orElse(null);
+        if (categoria == null) {
+            return ResultadoOperacao.erro("Categoria não encontrada.");
+        }
+
+        Prioridade prioridade = solicitacao.getPrioridade();
+        if (req.prioridade != null && !req.prioridade.isBlank()) {
+            try {
+                prioridade = Prioridade.valueOf(req.prioridade.trim().toUpperCase());
+            } catch (IllegalArgumentException e) {
+                return ResultadoOperacao.erro("Prioridade inválida (use BAIXA, MEDIA ou ALTA).");
+            }
+        }
+
+        solicitacao.setTitulo(req.titulo.trim());
+        solicitacao.setDescricao(req.descricao.trim());
+        solicitacao.setCategoria(categoria);
+        solicitacao.setPrioridade(prioridade);
+        solicitacaoRepository.save(solicitacao);
+        return ResultadoOperacao.ok("Solicitação atualizada com sucesso.", solicitacao);
     }
 
     public ResultadoOperacao resolver(Integer id, Usuario usuarioLogado) {
@@ -150,5 +200,20 @@ public class SolicitacaoService {
         respostaRepository.deleteBySolicitacaoId(solicitacao.getId());
         solicitacaoRepository.delete(solicitacao);
         return ResultadoOperacao.ok("Solicitação excluída com sucesso.");
+    }
+
+    /** Reúne todos os erros de campos obrigatórios da solicitação numa lista. */
+    private List<String> validarCampos(SolicitacaoRequest req) {
+        List<String> erros = new ArrayList<>();
+        if (req.titulo == null || req.titulo.isBlank()) {
+            erros.add("O título é obrigatório.");
+        }
+        if (req.descricao == null || req.descricao.isBlank()) {
+            erros.add("A descrição é obrigatória.");
+        }
+        if (req.categoriaId == null || req.categoriaId <= 0) {
+            erros.add("A categoria é obrigatória.");
+        }
+        return erros;
     }
 }

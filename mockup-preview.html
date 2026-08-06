@@ -1,0 +1,2283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Salesforce Light Helpdesk Mockup</title>
+<style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
+</head>
+<body>
+<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="Salesforce Light Helpdesk Mockup" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
+&lt;title&gt;Salesforce Light Helpdesk Mockup&lt;/title&gt;
+&lt;style&gt;:root {
+  color-scheme: light dark;
+  background-color: var(
+    --background,
+    var(--color-background-primary, light-dark(rgb(255 255 255), rgb(24 24 24)))
+  ) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: var(
+    --color-background-primary,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --card: color-mix(in oklab, var(--foreground) 5%, var(--background));
+  --card-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --popover: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255), rgb(45 45 45))
+  );
+  --popover-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --primary: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --primary-foreground: var(
+    --color-text-inverse,
+    light-dark(rgb(255 255 255), rgb(13 13 13))
+  );
+  --secondary: var(
+    --color-background-secondary,
+    light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%))
+  );
+  --secondary-foreground: var(
+    --color-text-primary,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: var(
+    --color-text-secondary,
+    light-dark(rgb(26 28 31 / 49.4%), rgb(255 255 255 / 49.8%))
+  );
+  --accent: var(
+    --color-background-info,
+    light-dark(rgb(229 242 255), rgb(13 39 63))
+  );
+  --accent-foreground: var(
+    --color-text-info,
+    light-dark(rgb(51 156 255), rgb(131 195 255))
+  );
+  --destructive: var(
+    --color-text-warning,
+    light-dark(rgb(226 85 7), rgb(255 133 73))
+  );
+  --border: var(
+    --color-border-secondary,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+  --input: var(
+    --color-border-primary,
+    light-dark(
+      rgb(26 28 31 / 11.8%),
+      color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+    )
+  );
+  --ring: var(
+    --color-ring-primary,
+    light-dark(rgb(51 156 255), rgb(131 195 255 / 76%))
+  );
+  --font-size-base: var(--font-text-md-size, 14px);
+  --red: light-dark(rgb(186 38 35), rgb(250 66 62));
+  --green: light-dark(rgb(0 162 64), rgb(64 201 119));
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, &quot;Segoe UI&quot;, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, &quot;Liberation Mono&quot;,
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --radius: var(--border-radius-lg, 12.5px);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 17 17&#x27;%3E%3Cpath d=&#x27;M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z&#x27;/%3E%3C/svg%3E&quot;);
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+}
+
+:root[data-theme=&quot;light&quot;] {
+  color-scheme: light;
+}
+
+:root[data-theme=&quot;dark&quot;] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html &gt; body {
+  /* Preserve MCP aliases for older inline renderers without creating :root cycles. */
+  --color-background-primary: var(
+    --background,
+    light-dark(rgb(255 255 255), rgb(24 24 24))
+  );
+  --color-text-primary: var(
+    --foreground,
+    light-dark(rgb(26 28 31), rgb(255 255 255))
+  );
+  --color-border-secondary: var(
+    --border,
+    light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%))
+  );
+
+  margin: 0;
+  padding: 5px;
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--font-weight-medium, 500);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.table-responsive &gt; .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead th {
+  padding-block: 8px;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 6px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align=&quot;right&quot;]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align=&quot;center&quot;]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: superellipse(1.5);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget &gt; :not(.card) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls &gt; .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls &gt; .form-label &gt; :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type=&quot;file&quot;] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type=&quot;file&quot;]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type=&quot;file&quot;]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type=&quot;color&quot;] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: superellipse(1.5);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: &quot;&quot;;
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type=&quot;radio&quot;] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type=&quot;radio&quot;]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: &quot;&quot;;
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+    [aria-pressed=&quot;true&quot;],
+    [aria-selected=&quot;true&quot;],
+    .is-selected
+  ) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed=&quot;true&quot;], [aria-selected=&quot;true&quot;], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget &gt; svg {
+  width: 100%;
+}
+
+/* Model-authored chart rules can otherwise stretch icons after these styles load. */
+svg.lucide {
+  display: block;
+  width: 16px !important;
+  height: 16px !important;
+  flex: none;
+  margin: 0 !important;
+  stroke-width: 1.6;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html&gt;body{padding:0}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;hs-salesforce-light-mockup&quot;&gt;
+  &lt;style&gt;
+    #hs-salesforce-light-mockup {
+      --helpdesk-navy: #032d60;
+      --helpdesk-blue: #0176d3;
+      --helpdesk-blue-dark: #0b5cab;
+      --helpdesk-blue-soft: #eef6ff;
+      --helpdesk-canvas: #f3f5f8;
+      --helpdesk-surface: #ffffff;
+      --helpdesk-surface-soft: #f8fafc;
+      --helpdesk-border: #d8dde6;
+      --helpdesk-border-strong: #b8c2d0;
+      --helpdesk-text: #181818;
+      --helpdesk-muted: #5f6b7a;
+      --helpdesk-success: #2e844a;
+      --helpdesk-success-soft: #eaf7ee;
+      --helpdesk-warning: #8c4b02;
+      --helpdesk-warning-soft: #fff4e5;
+      --helpdesk-danger: #ba0517;
+      --helpdesk-danger-soft: #fef1f2;
+      width: 100%;
+      color: var(--helpdesk-text);
+      font-family: Inter, &quot;Segoe UI&quot;, Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    #hs-salesforce-light-mockup * {
+      box-sizing: border-box;
+    }
+
+    #hs-salesforce-light-mockup button,
+    #hs-salesforce-light-mockup input,
+    #hs-salesforce-light-mockup select,
+    #hs-salesforce-light-mockup textarea {
+      font: inherit;
+      letter-spacing: 0;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-preview-picker {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-preview-picker button {
+      min-height: 36px;
+      padding: 0 14px;
+      border: 1px solid var(--helpdesk-border);
+      border-radius: 6px;
+      background: var(--helpdesk-surface);
+      color: var(--helpdesk-muted);
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-preview-picker button[aria-pressed=&quot;true&quot;] {
+      border-color: var(--helpdesk-blue);
+      background: var(--helpdesk-blue-soft);
+      color: var(--helpdesk-blue-dark);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-product {
+      overflow: hidden;
+      border: 1px solid var(--helpdesk-border);
+      border-radius: 8px;
+      background: var(--helpdesk-canvas);
+      box-shadow: 0 16px 38px rgba(24, 24, 24, 0.11);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-screen {
+      display: none;
+      min-height: 680px;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-screen.is-active {
+      display: block;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-app-header {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 24px;
+      min-height: 64px;
+      padding: 0 24px;
+      border-bottom: 1px solid var(--helpdesk-border);
+      background: var(--helpdesk-surface);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      color: var(--helpdesk-navy);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 8px;
+      background: var(--helpdesk-blue);
+      color: #ffffff;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-brand strong,
+    #hs-salesforce-light-mockup .helpdesk-brand small {
+      display: block;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-brand strong {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-brand small {
+      margin-top: 2px;
+      color: var(--helpdesk-muted);
+      font-size: 0.76rem;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-main-nav {
+      display: flex;
+      align-items: stretch;
+      gap: 6px;
+      height: 64px;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-main-nav button {
+      position: relative;
+      min-width: 100px;
+      border: 0;
+      background: transparent;
+      color: var(--helpdesk-muted);
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-main-nav button.is-current {
+      color: var(--helpdesk-navy);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-main-nav button.is-current::after {
+      content: &quot;&quot;;
+      position: absolute;
+      right: 16px;
+      bottom: 0;
+      left: 16px;
+      height: 3px;
+      background: var(--helpdesk-blue);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-header-actions,
+    #hs-salesforce-light-mockup .helpdesk-action-row,
+    #hs-salesforce-light-mockup .helpdesk-user-actions,
+    #hs-salesforce-light-mockup .helpdesk-pagination,
+    #hs-salesforce-light-mockup .helpdesk-inline-fields {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-icon-button,
+    #hs-salesforce-light-mockup .helpdesk-button {
+      min-height: 38px;
+      border: 1px solid var(--helpdesk-border-strong);
+      border-radius: 6px;
+      background: var(--helpdesk-surface);
+      color: var(--helpdesk-navy);
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-icon-button {
+      width: 38px;
+      display: grid;
+      place-items: center;
+      padding: 0;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 15px;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-button.primary {
+      border-color: var(--helpdesk-blue);
+      background: var(--helpdesk-blue);
+      color: #ffffff;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-button.danger {
+      border-color: #efb3ba;
+      background: var(--helpdesk-surface);
+      color: var(--helpdesk-danger);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-notification-button {
+      position: relative;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-notification-dot {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 7px;
+      height: 7px;
+      border: 2px solid #ffffff;
+      border-radius: 50%;
+      background: var(--helpdesk-danger);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-page-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 26px 28px 22px;
+      border-bottom: 1px solid var(--helpdesk-border);
+      background: var(--helpdesk-surface);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-eyebrow {
+      margin: 0 0 7px;
+      color: var(--helpdesk-blue-dark);
+      font-size: 0.78rem;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-page-head h1,
+    #hs-salesforce-light-mockup .helpdesk-auth-card h1,
+    #hs-salesforce-light-mockup .helpdesk-dialog h2,
+    #hs-salesforce-light-mockup .helpdesk-section-title h2 {
+      margin: 0;
+      color: var(--helpdesk-navy);
+      font-weight: 500;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-page-head h1 {
+      font-size: 1.65rem;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-page-head p,
+    #hs-salesforce-light-mockup .helpdesk-auth-card p,
+    #hs-salesforce-light-mockup .helpdesk-dialog p,
+    #hs-salesforce-light-mockup .helpdesk-section-title p {
+      margin: 6px 0 0;
+      color: var(--helpdesk-muted);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-page-body {
+      display: grid;
+      gap: 16px;
+      padding: 20px 28px 28px;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-filter-bar {
+      display: grid;
+      grid-template-columns: minmax(220px, 1.3fr) repeat(3, minmax(135px, 0.6fr)) auto;
+      gap: 12px;
+      align-items: end;
+      padding: 16px;
+      border: 1px solid var(--helpdesk-border);
+      border-radius: 6px;
+      background: var(--helpdesk-surface);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-field {
+      display: grid;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-field label {
+      color: #3e4855;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-field input,
+    #hs-salesforce-light-mockup .helpdesk-field select,
+    #hs-salesforce-light-mockup .helpdesk-field textarea {
+      width: 100%;
+      min-height: 40px;
+      padding: 0 11px;
+      border: 1px solid var(--helpdesk-border-strong);
+      border-radius: 5px;
+      background: var(--helpdesk-surface);
+      color: var(--helpdesk-text);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-field textarea {
+      min-height: 104px;
+      padding-top: 10px;
+      resize: vertical;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border: 1px solid var(--helpdesk-border);
+      border-radius: 6px;
+      background: var(--helpdesk-surface);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-metric {
+      padding: 15px 18px;
+      border-right: 1px solid var(--helpdesk-border);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-metric:last-child {
+      border-right: 0;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-metric span {
+      display: block;
+      color: var(--helpdesk-muted);
+      font-size: 0.78rem;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-metric strong {
+      display: block;
+      margin-top: 5px;
+      color: var(--helpdesk-navy);
+      font-size: 1.35rem;
+      font-weight: 500;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-list {
+      overflow: hidden;
+      border: 1px solid var(--helpdesk-border);
+      border-radius: 6px;
+      background: var(--helpdesk-surface);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-list-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--helpdesk-border);
+      background: var(--helpdesk-surface-soft);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-list-head strong {
+      color: var(--helpdesk-navy);
+      font-weight: 500;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-ticket {
+      position: relative;
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 18px;
+      padding: 17px 18px 17px 22px;
+      border: 0;
+      border-bottom: 1px solid var(--helpdesk-border);
+      background: var(--helpdesk-surface);
+      color: var(--helpdesk-text);
+      text-align: left;
+      cursor: pointer;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-ticket::before {
+      content: &quot;&quot;;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 4px;
+      background: var(--helpdesk-border-strong);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-ticket.high::before {
+      background: #dd7a01;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-ticket:last-child {
+      border-bottom: 0;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-ticket:hover {
+      background: #fbfdff;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-ticket h3,
+    #hs-salesforce-light-mockup .helpdesk-ticket p {
+      margin: 0;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-ticket h3 {
+      color: var(--helpdesk-navy);
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-ticket p {
+      margin-top: 5px;
+      color: var(--helpdesk-muted);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-ticket-meta,
+    #hs-salesforce-light-mockup .helpdesk-detail-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 11px;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      min-height: 24px;
+      padding: 0 8px;
+      border-radius: 4px;
+      background: var(--helpdesk-blue-soft);
+      color: var(--helpdesk-blue-dark);
+      font-size: 0.76rem;
+      font-weight: 500;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-chip.success {
+      background: var(--helpdesk-success-soft);
+      color: var(--helpdesk-success);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-chip.warning {
+      background: var(--helpdesk-warning-soft);
+      color: var(--helpdesk-warning);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-chip.neutral {
+      background: #f0f2f5;
+      color: #4f5865;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-ticket-end {
+      display: grid;
+      gap: 7px;
+      align-content: start;
+      justify-items: end;
+      color: var(--helpdesk-muted);
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-ticket-end strong {
+      color: var(--helpdesk-navy);
+      font-weight: 500;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-list-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 16px;
+      border-top: 1px solid var(--helpdesk-border);
+      background: var(--helpdesk-surface-soft);
+      color: var(--helpdesk-muted);
+      font-size: 0.82rem;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-page-button {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--helpdesk-border);
+      border-radius: 5px;
+      background: var(--helpdesk-surface);
+      color: var(--helpdesk-navy);
+      cursor: pointer;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-page-button.current {
+      border-color: var(--helpdesk-blue);
+      background: var(--helpdesk-blue);
+      color: #ffffff;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-auth-screen {
+      min-height: 680px;
+      background: var(--helpdesk-surface);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-auth-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 78px;
+      border-bottom: 1px solid var(--helpdesk-border);
+      background: var(--helpdesk-surface);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-auth-main {
+      min-height: 602px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(340px, 460px);
+      gap: 64px;
+      align-items: center;
+      padding: 48px max(32px, 8%);
+      background: var(--helpdesk-surface-soft);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-auth-message {
+      max-width: 590px;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-auth-message .helpdesk-cloud-icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 22px;
+      border-radius: 10px;
+      background: var(--helpdesk-blue-soft);
+      color: var(--helpdesk-blue);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-auth-message h2 {
+      max-width: 560px;
+      margin: 0;
+      color: var(--helpdesk-navy);
+      font-size: 2rem;
+      font-weight: 500;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-auth-message p {
+      max-width: 520px;
+      margin: 14px 0 0;
+      color: var(--helpdesk-muted);
+      font-size: 1rem;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 28px;
+      color: #3e4855;
+      font-size: 0.82rem;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-trust-row span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-auth-card {
+      padding: 28px;
+      border: 1px solid var(--helpdesk-border);
+      border-radius: 8px;
+      background: var(--helpdesk-surface);
+      box-shadow: 0 12px 32px rgba(24, 24, 24, 0.08);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-auth-card h1 {
+      font-size: 1.5rem;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-form-stack {
+      display: grid;
+      gap: 15px;
+      margin-top: 22px;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-text-link {
+      border: 0;
+      background: transparent;
+      color: var(--helpdesk-blue-dark);
+      cursor: pointer;
+      padding: 0;
+      text-decoration: underline;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-auth-card .helpdesk-button.primary {
+      width: 100%;
+      min-height: 42px;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-auth-card-footer {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--helpdesk-border);
+      color: var(--helpdesk-muted);
+      text-align: center;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-admin-grid {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.7fr) minmax(0, 1.3fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-panel {
+      border: 1px solid var(--helpdesk-border);
+      border-radius: 6px;
+      background: var(--helpdesk-surface);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-panel-head,
+    #hs-salesforce-light-mockup .helpdesk-section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 15px 16px;
+      border-bottom: 1px solid var(--helpdesk-border);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-section-title h2 {
+      font-size: 1rem;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-panel-content {
+      padding: 16px;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-admin-stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-catalog-list {
+      display: grid;
+      gap: 2px;
+      margin-top: 14px;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-catalog-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 42px;
+      padding: 0 8px 0 10px;
+      border-bottom: 1px solid #edf0f4;
+      color: #3e4855;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-catalog-item:last-child {
+      border-bottom: 0;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-table-wrap {
+      overflow-x: auto;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-table {
+      width: 100%;
+      min-width: 660px;
+      border-collapse: collapse;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-table th,
+    #hs-salesforce-light-mockup .helpdesk-table td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--helpdesk-border);
+      text-align: left;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-table th {
+      background: var(--helpdesk-surface-soft);
+      color: #3e4855;
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-user-cell {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 180px;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-avatar {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: #e9edf3;
+      color: var(--helpdesk-navy);
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-user-cell strong,
+    #hs-salesforce-light-mockup .helpdesk-user-cell small {
+      display: block;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-user-cell strong {
+      color: var(--helpdesk-text);
+      font-weight: 500;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-user-cell small {
+      margin-top: 2px;
+      color: var(--helpdesk-muted);
+      font-size: 0.76rem;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-overlay-stage {
+      position: relative;
+      min-height: 680px;
+      padding: 72px 28px 36px;
+      background: rgba(3, 45, 96, 0.18);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-dialog {
+      width: min(100%, 900px);
+      margin: 0 auto;
+      overflow: hidden;
+      border: 1px solid var(--helpdesk-border-strong);
+      border-radius: 8px;
+      background: var(--helpdesk-surface);
+      box-shadow: 0 24px 60px rgba(3, 45, 96, 0.18);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-dialog-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 20px 22px;
+      border-bottom: 1px solid var(--helpdesk-border);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-dialog h2 {
+      margin-top: 7px;
+      font-size: 1.35rem;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-dialog-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 250px;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-dialog-main,
+    #hs-salesforce-light-mockup .helpdesk-dialog-side {
+      padding: 22px;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-dialog-side {
+      border-left: 1px solid var(--helpdesk-border);
+      background: var(--helpdesk-surface-soft);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-dialog-side dl {
+      display: grid;
+      gap: 14px;
+      margin: 0;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-dialog-side dt {
+      color: var(--helpdesk-muted);
+      font-size: 0.76rem;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-dialog-side dd {
+      margin: 3px 0 0;
+      color: var(--helpdesk-text);
+      font-weight: 500;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-conversation {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-message {
+      padding: 13px 14px;
+      border-left: 3px solid var(--helpdesk-blue);
+      border-radius: 0 5px 5px 0;
+      background: var(--helpdesk-blue-soft);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-message p {
+      margin: 0;
+      color: #263342;
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-message small {
+      display: block;
+      margin-top: 7px;
+      color: var(--helpdesk-muted);
+    }
+
+    #hs-salesforce-light-mockup .helpdesk-dialog-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 22px;
+      border-top: 1px solid var(--helpdesk-border);
+      background: var(--helpdesk-surface-soft);
+    }
+
+    @media (max-width: 900px) {
+      #hs-salesforce-light-mockup .helpdesk-app-header {
+        grid-template-columns: 1fr auto;
+      }
+
+      #hs-salesforce-light-mockup .helpdesk-main-nav {
+        grid-column: 1 / -1;
+        order: 3;
+        width: 100%;
+        height: 48px;
+      }
+
+      #hs-salesforce-light-mockup .helpdesk-main-nav button {
+        flex: 1 1 0;
+      }
+
+      #hs-salesforce-light-mockup .helpdesk-filter-bar {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      #hs-salesforce-light-mockup .helpdesk-auth-main,
+      #hs-salesforce-light-mockup .helpdesk-admin-grid,
+      #hs-salesforce-light-mockup .helpdesk-dialog-grid {
+        grid-template-columns: 1fr;
+      }
+
+      #hs-salesforce-light-mockup .helpdesk-auth-message {
+        display: none;
+      }
+
+      #hs-salesforce-light-mockup .helpdesk-dialog-side {
+        border-top: 1px solid var(--helpdesk-border);
+        border-left: 0;
+      }
+    }
+
+    @media (max-width: 620px) {
+      #hs-salesforce-light-mockup .helpdesk-screen {
+        min-height: 0;
+      }
+
+      #hs-salesforce-light-mockup .helpdesk-app-header,
+      #hs-salesforce-light-mockup .helpdesk-page-head,
+      #hs-salesforce-light-mockup .helpdesk-list-footer,
+      #hs-salesforce-light-mockup .helpdesk-dialog-foot {
+        align-items: stretch;
+      }
+
+      #hs-salesforce-light-mockup .helpdesk-page-head,
+      #hs-salesforce-light-mockup .helpdesk-list-footer,
+      #hs-salesforce-light-mockup .helpdesk-dialog-foot {
+        flex-direction: column;
+      }
+
+      #hs-salesforce-light-mockup .helpdesk-app-header {
+        padding: 10px 14px 0;
+      }
+
+      #hs-salesforce-light-mockup .helpdesk-header-actions .helpdesk-button {
+        display: none;
+      }
+
+      #hs-salesforce-light-mockup .helpdesk-page-head,
+      #hs-salesforce-light-mockup .helpdesk-page-body,
+      #hs-salesforce-light-mockup .helpdesk-auth-main,
+      #hs-salesforce-light-mockup .helpdesk-overlay-stage {
+        padding-right: 16px;
+        padding-left: 16px;
+      }
+
+      #hs-salesforce-light-mockup .helpdesk-filter-bar,
+      #hs-salesforce-light-mockup .helpdesk-metrics {
+        grid-template-columns: 1fr;
+      }
+
+      #hs-salesforce-light-mockup .helpdesk-metric {
+        border-right: 0;
+        border-bottom: 1px solid var(--helpdesk-border);
+      }
+
+      #hs-salesforce-light-mockup .helpdesk-metric:last-child {
+        border-bottom: 0;
+      }
+
+      #hs-salesforce-light-mockup .helpdesk-ticket {
+        grid-template-columns: 1fr;
+      }
+
+      #hs-salesforce-light-mockup .helpdesk-ticket-end {
+        grid-auto-flow: column;
+        justify-content: start;
+      }
+
+      #hs-salesforce-light-mockup .helpdesk-auth-card {
+        padding: 22px;
+      }
+    }
+  &lt;/style&gt;
+
+  &lt;div class=&quot;helpdesk-preview-picker&quot; aria-label=&quot;Telas do produto&quot;&gt;
+    &lt;button type=&quot;button&quot; data-helpdesk-screen=&quot;login&quot; aria-pressed=&quot;false&quot;&gt;Login&lt;/button&gt;
+    &lt;button type=&quot;button&quot; data-helpdesk-screen=&quot;cadastro&quot; aria-pressed=&quot;false&quot;&gt;Cadastro&lt;/button&gt;
+    &lt;button type=&quot;button&quot; data-helpdesk-screen=&quot;solicitacoes&quot; aria-pressed=&quot;true&quot;&gt;Solicitações&lt;/button&gt;
+    &lt;button type=&quot;button&quot; data-helpdesk-screen=&quot;detalhes&quot; aria-pressed=&quot;false&quot;&gt;Modal&lt;/button&gt;
+    &lt;button type=&quot;button&quot; data-helpdesk-screen=&quot;admin&quot; aria-pressed=&quot;false&quot;&gt;Admin&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;helpdesk-product&quot;&gt;
+    &lt;section class=&quot;helpdesk-screen&quot; data-helpdesk-panel=&quot;login&quot; aria-label=&quot;Tela de login&quot;&gt;
+      &lt;div class=&quot;helpdesk-auth-screen&quot;&gt;
+        &lt;header class=&quot;helpdesk-auth-header&quot;&gt;
+          &lt;div class=&quot;helpdesk-brand&quot;&gt;
+            &lt;span class=&quot;helpdesk-brand-mark&quot;&gt;&lt;i data-lucide=&quot;cloud&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+            &lt;span&gt;&lt;strong&gt;Help System&lt;/strong&gt;&lt;small&gt;Specialisterne + Salesforce&lt;/small&gt;&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/header&gt;
+        &lt;main class=&quot;helpdesk-auth-main&quot;&gt;
+          &lt;div class=&quot;helpdesk-auth-message&quot;&gt;
+            &lt;span class=&quot;helpdesk-cloud-icon&quot;&gt;&lt;i data-lucide=&quot;messages-square&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+            &lt;h2&gt;Suporte interno claro, rápido e fácil de acompanhar.&lt;/h2&gt;
+            &lt;p&gt;Registre solicitações, converse com a equipe responsável e acompanhe cada atualização em um único lugar.&lt;/p&gt;
+            &lt;div class=&quot;helpdesk-trust-row&quot;&gt;
+              &lt;span&gt;&lt;i data-lucide=&quot;shield-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Acesso protegido&lt;/span&gt;
+              &lt;span&gt;&lt;i data-lucide=&quot;bell&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Atualizações em tempo real&lt;/span&gt;
+              &lt;span&gt;&lt;i data-lucide=&quot;circle-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Histórico organizado&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;helpdesk-auth-card&quot;&gt;
+            &lt;p class=&quot;helpdesk-eyebrow&quot;&gt;Bem-vindo&lt;/p&gt;
+            &lt;h1&gt;Entrar&lt;/h1&gt;
+            &lt;p&gt;Use seu e-mail corporativo para continuar.&lt;/p&gt;
+            &lt;div class=&quot;helpdesk-form-stack&quot;&gt;
+              &lt;div class=&quot;helpdesk-field&quot;&gt;
+                &lt;label for=&quot;helpdesk-login-email&quot;&gt;E-mail&lt;/label&gt;
+                &lt;input id=&quot;helpdesk-login-email&quot; type=&quot;email&quot; placeholder=&quot;nome@empresa.com&quot; /&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;helpdesk-field&quot;&gt;
+                &lt;label for=&quot;helpdesk-login-password&quot;&gt;Senha&lt;/label&gt;
+                &lt;input id=&quot;helpdesk-login-password&quot; type=&quot;password&quot; placeholder=&quot;Sua senha&quot; /&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;helpdesk-action-row&quot; style=&quot;justify-content: flex-end;&quot;&gt;
+                &lt;button class=&quot;helpdesk-text-link&quot; type=&quot;button&quot;&gt;Esqueci minha senha&lt;/button&gt;
+              &lt;/div&gt;
+              &lt;button class=&quot;helpdesk-button primary&quot; type=&quot;button&quot;&gt;Entrar&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;helpdesk-auth-card-footer&quot;&gt;Ainda não tem conta? &lt;button class=&quot;helpdesk-text-link&quot; type=&quot;button&quot; data-open-screen=&quot;cadastro&quot;&gt;Cadastre-se&lt;/button&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/main&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;helpdesk-screen&quot; data-helpdesk-panel=&quot;cadastro&quot; aria-label=&quot;Tela de cadastro&quot;&gt;
+      &lt;div class=&quot;helpdesk-auth-screen&quot;&gt;
+        &lt;header class=&quot;helpdesk-auth-header&quot;&gt;
+          &lt;div class=&quot;helpdesk-brand&quot;&gt;
+            &lt;span class=&quot;helpdesk-brand-mark&quot;&gt;&lt;i data-lucide=&quot;cloud&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+            &lt;span&gt;&lt;strong&gt;Help System&lt;/strong&gt;&lt;small&gt;Specialisterne + Salesforce&lt;/small&gt;&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/header&gt;
+        &lt;main class=&quot;helpdesk-auth-main&quot;&gt;
+          &lt;div class=&quot;helpdesk-auth-message&quot;&gt;
+            &lt;span class=&quot;helpdesk-cloud-icon&quot;&gt;&lt;i data-lucide=&quot;user-plus&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+            &lt;h2&gt;Seu canal direto com as equipes que podem ajudar.&lt;/h2&gt;
+            &lt;p&gt;Crie sua conta para abrir pedidos, acompanhar respostas e receber notificações sobre cada solicitação.&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;helpdesk-auth-card&quot;&gt;
+            &lt;p class=&quot;helpdesk-eyebrow&quot;&gt;Nova conta&lt;/p&gt;
+            &lt;h1&gt;Cadastre-se&lt;/h1&gt;
+            &lt;p&gt;Preencha seus dados para começar.&lt;/p&gt;
+            &lt;div class=&quot;helpdesk-form-stack&quot;&gt;
+              &lt;div class=&quot;helpdesk-field&quot;&gt;&lt;label for=&quot;helpdesk-signup-name&quot;&gt;Nome completo&lt;/label&gt;&lt;input id=&quot;helpdesk-signup-name&quot; type=&quot;text&quot; placeholder=&quot;Seu nome&quot; /&gt;&lt;/div&gt;
+              &lt;div class=&quot;helpdesk-field&quot;&gt;&lt;label for=&quot;helpdesk-signup-email&quot;&gt;E-mail&lt;/label&gt;&lt;input id=&quot;helpdesk-signup-email&quot; type=&quot;email&quot; placeholder=&quot;nome@empresa.com&quot; /&gt;&lt;/div&gt;
+              &lt;div class=&quot;helpdesk-inline-fields&quot;&gt;
+                &lt;div class=&quot;helpdesk-field&quot; style=&quot;flex: 1 1 180px;&quot;&gt;&lt;label for=&quot;helpdesk-signup-dept&quot;&gt;Departamento&lt;/label&gt;&lt;select id=&quot;helpdesk-signup-dept&quot;&gt;&lt;option&gt;Selecione&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;
+                &lt;div class=&quot;helpdesk-field&quot; style=&quot;flex: 1 1 180px;&quot;&gt;&lt;label for=&quot;helpdesk-signup-password&quot;&gt;Senha&lt;/label&gt;&lt;input id=&quot;helpdesk-signup-password&quot; type=&quot;password&quot; placeholder=&quot;Mínimo de 8 caracteres&quot; /&gt;&lt;/div&gt;
+              &lt;/div&gt;
+              &lt;button class=&quot;helpdesk-button primary&quot; type=&quot;button&quot;&gt;Criar conta&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;helpdesk-auth-card-footer&quot;&gt;Já tem uma conta? &lt;button class=&quot;helpdesk-text-link&quot; type=&quot;button&quot; data-open-screen=&quot;login&quot;&gt;Entrar&lt;/button&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/main&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;helpdesk-screen is-active&quot; data-helpdesk-panel=&quot;solicitacoes&quot; aria-label=&quot;Painel de solicitações&quot;&gt;
+      &lt;header class=&quot;helpdesk-app-header&quot;&gt;
+        &lt;div class=&quot;helpdesk-brand&quot;&gt;
+          &lt;span class=&quot;helpdesk-brand-mark&quot;&gt;&lt;i data-lucide=&quot;cloud&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+          &lt;span&gt;&lt;strong&gt;Help System&lt;/strong&gt;&lt;small&gt;Specialisterne + Salesforce&lt;/small&gt;&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;nav class=&quot;helpdesk-main-nav&quot; aria-label=&quot;Navegação principal&quot;&gt;
+          &lt;button type=&quot;button&quot; class=&quot;is-current&quot;&gt;Solicitações&lt;/button&gt;
+          &lt;button type=&quot;button&quot; data-open-screen=&quot;admin&quot;&gt;Admin&lt;/button&gt;
+        &lt;/nav&gt;
+        &lt;div class=&quot;helpdesk-header-actions&quot;&gt;
+          &lt;button class=&quot;helpdesk-icon-button helpdesk-notification-button&quot; type=&quot;button&quot; aria-label=&quot;Notificações&quot;&gt;&lt;i data-lucide=&quot;bell&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;helpdesk-notification-dot&quot;&gt;&lt;/span&gt;&lt;/button&gt;
+          &lt;button class=&quot;helpdesk-button&quot; type=&quot;button&quot;&gt;&lt;i data-lucide=&quot;log-out&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Sair&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/header&gt;
+
+      &lt;div class=&quot;helpdesk-page-head&quot;&gt;
+        &lt;div&gt;&lt;p class=&quot;helpdesk-eyebrow&quot;&gt;Central de atendimento&lt;/p&gt;&lt;h1&gt;Solicitações&lt;/h1&gt;&lt;p&gt;Acompanhe e organize os pedidos em andamento.&lt;/p&gt;&lt;/div&gt;
+        &lt;button class=&quot;helpdesk-button primary&quot; type=&quot;button&quot;&gt;&lt;i data-lucide=&quot;plus&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Nova solicitação&lt;/button&gt;
+      &lt;/div&gt;
+
+      &lt;main class=&quot;helpdesk-page-body&quot;&gt;
+        &lt;div class=&quot;helpdesk-filter-bar&quot;&gt;
+          &lt;div class=&quot;helpdesk-field&quot;&gt;&lt;label for=&quot;helpdesk-search&quot;&gt;Buscar&lt;/label&gt;&lt;input id=&quot;helpdesk-search&quot; type=&quot;search&quot; placeholder=&quot;Título ou descrição&quot; /&gt;&lt;/div&gt;
+          &lt;div class=&quot;helpdesk-field&quot;&gt;&lt;label for=&quot;helpdesk-status&quot;&gt;Status&lt;/label&gt;&lt;select id=&quot;helpdesk-status&quot;&gt;&lt;option&gt;Todos&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;
+          &lt;div class=&quot;helpdesk-field&quot;&gt;&lt;label for=&quot;helpdesk-category&quot;&gt;Categoria&lt;/label&gt;&lt;select id=&quot;helpdesk-category&quot;&gt;&lt;option&gt;Todas&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;
+          &lt;div class=&quot;helpdesk-field&quot;&gt;&lt;label for=&quot;helpdesk-order&quot;&gt;Ordenar por&lt;/label&gt;&lt;select id=&quot;helpdesk-order&quot;&gt;&lt;option&gt;Mais recentes&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;
+          &lt;button class=&quot;helpdesk-button&quot; type=&quot;button&quot;&gt;Limpar&lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;helpdesk-metrics&quot; aria-label=&quot;Resumo das solicitações&quot;&gt;
+          &lt;div class=&quot;helpdesk-metric&quot;&gt;&lt;span&gt;Total&lt;/span&gt;&lt;strong&gt;14&lt;/strong&gt;&lt;/div&gt;
+          &lt;div class=&quot;helpdesk-metric&quot;&gt;&lt;span&gt;Abertas&lt;/span&gt;&lt;strong&gt;6&lt;/strong&gt;&lt;/div&gt;
+          &lt;div class=&quot;helpdesk-metric&quot;&gt;&lt;span&gt;Respondidas&lt;/span&gt;&lt;strong&gt;6&lt;/strong&gt;&lt;/div&gt;
+          &lt;div class=&quot;helpdesk-metric&quot;&gt;&lt;span&gt;Resolvidas&lt;/span&gt;&lt;strong&gt;2&lt;/strong&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;helpdesk-list&quot;&gt;
+          &lt;div class=&quot;helpdesk-list-head&quot;&gt;&lt;strong&gt;Pedidos recentes&lt;/strong&gt;&lt;span class=&quot;helpdesk-chip neutral&quot;&gt;14 resultados&lt;/span&gt;&lt;/div&gt;
+          &lt;button class=&quot;helpdesk-ticket high&quot; type=&quot;button&quot; data-open-screen=&quot;detalhes&quot;&gt;
+            &lt;div&gt;&lt;h3&gt;Erro ao acessar o VPN&lt;/h3&gt;&lt;p&gt;Não conecto no VPN desde ontem e preciso acessar o ambiente de homologação.&lt;/p&gt;&lt;div class=&quot;helpdesk-ticket-meta&quot;&gt;&lt;span class=&quot;helpdesk-chip warning&quot;&gt;Alta prioridade&lt;/span&gt;&lt;span class=&quot;helpdesk-chip&quot;&gt;Sistemas&lt;/span&gt;&lt;span class=&quot;helpdesk-chip success&quot;&gt;Respondida&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;helpdesk-ticket-end&quot;&gt;&lt;strong&gt;#14&lt;/strong&gt;&lt;span&gt;Hoje, 15:24&lt;/span&gt;&lt;i data-lucide=&quot;chevron-right&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+          &lt;/button&gt;
+          &lt;button class=&quot;helpdesk-ticket&quot; type=&quot;button&quot; data-open-screen=&quot;detalhes&quot;&gt;
+            &lt;div&gt;&lt;h3&gt;Permissão no Salesforce&lt;/h3&gt;&lt;p&gt;Preciso liberar acesso ao painel de oportunidades para acompanhar uma turma.&lt;/p&gt;&lt;div class=&quot;helpdesk-ticket-meta&quot;&gt;&lt;span class=&quot;helpdesk-chip neutral&quot;&gt;Média prioridade&lt;/span&gt;&lt;span class=&quot;helpdesk-chip&quot;&gt;Acessos&lt;/span&gt;&lt;span class=&quot;helpdesk-chip neutral&quot;&gt;Aberta&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;helpdesk-ticket-end&quot;&gt;&lt;strong&gt;#13&lt;/strong&gt;&lt;span&gt;Hoje, 14:10&lt;/span&gt;&lt;i data-lucide=&quot;chevron-right&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+          &lt;/button&gt;
+          &lt;button class=&quot;helpdesk-ticket&quot; type=&quot;button&quot; data-open-screen=&quot;detalhes&quot;&gt;
+            &lt;div&gt;&lt;h3&gt;Atualização de cadastro&lt;/h3&gt;&lt;p&gt;Meu departamento aparece incorreto no perfil e nas solicitações criadas.&lt;/p&gt;&lt;div class=&quot;helpdesk-ticket-meta&quot;&gt;&lt;span class=&quot;helpdesk-chip neutral&quot;&gt;Baixa prioridade&lt;/span&gt;&lt;span class=&quot;helpdesk-chip&quot;&gt;Cadastro&lt;/span&gt;&lt;span class=&quot;helpdesk-chip success&quot;&gt;Resolvida&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;helpdesk-ticket-end&quot;&gt;&lt;strong&gt;#12&lt;/strong&gt;&lt;span&gt;Ontem, 18:42&lt;/span&gt;&lt;i data-lucide=&quot;chevron-right&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+          &lt;/button&gt;
+          &lt;div class=&quot;helpdesk-list-footer&quot;&gt;&lt;span&gt;Mostrando 1–5 de 14 solicitações&lt;/span&gt;&lt;div class=&quot;helpdesk-pagination&quot;&gt;&lt;button class=&quot;helpdesk-page-button&quot; type=&quot;button&quot; aria-label=&quot;Página anterior&quot;&gt;&lt;i data-lucide=&quot;chevron-left&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;button class=&quot;helpdesk-page-button current&quot; type=&quot;button&quot;&gt;1&lt;/button&gt;&lt;button class=&quot;helpdesk-page-button&quot; type=&quot;button&quot;&gt;2&lt;/button&gt;&lt;button class=&quot;helpdesk-page-button&quot; type=&quot;button&quot;&gt;3&lt;/button&gt;&lt;button class=&quot;helpdesk-page-button&quot; type=&quot;button&quot; aria-label=&quot;Próxima página&quot;&gt;&lt;i data-lucide=&quot;chevron-right&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/main&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;helpdesk-screen&quot; data-helpdesk-panel=&quot;detalhes&quot; aria-label=&quot;Modal de detalhes da solicitação&quot;&gt;
+      &lt;div class=&quot;helpdesk-overlay-stage&quot;&gt;
+        &lt;div class=&quot;helpdesk-dialog&quot; role=&quot;dialog&quot; aria-modal=&quot;true&quot; aria-labelledby=&quot;helpdesk-dialog-title&quot;&gt;
+          &lt;div class=&quot;helpdesk-dialog-head&quot;&gt;
+            &lt;div&gt;&lt;span class=&quot;helpdesk-chip warning&quot;&gt;Alta prioridade&lt;/span&gt;&lt;h2 id=&quot;helpdesk-dialog-title&quot;&gt;Erro ao acessar o VPN&lt;/h2&gt;&lt;div class=&quot;helpdesk-detail-meta&quot;&gt;&lt;span class=&quot;helpdesk-chip&quot;&gt;Sistemas&lt;/span&gt;&lt;span class=&quot;helpdesk-chip success&quot;&gt;Respondida&lt;/span&gt;&lt;span class=&quot;helpdesk-chip neutral&quot;&gt;#14&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;button class=&quot;helpdesk-icon-button&quot; type=&quot;button&quot; aria-label=&quot;Fechar&quot; data-open-screen=&quot;solicitacoes&quot;&gt;&lt;i data-lucide=&quot;x&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;helpdesk-dialog-grid&quot;&gt;
+            &lt;div class=&quot;helpdesk-dialog-main&quot;&gt;
+              &lt;p&gt;Não conecto no VPN desde ontem e preciso acessar o ambiente de homologação para finalizar uma atividade.&lt;/p&gt;
+              &lt;div class=&quot;helpdesk-conversation&quot;&gt;
+                &lt;div class=&quot;helpdesk-message&quot;&gt;&lt;p&gt;Identificamos uma política antiga vinculada ao seu perfil. O acesso foi atualizado; tente novamente, por favor.&lt;/p&gt;&lt;small&gt;Administrador · hoje às 15:24&lt;/small&gt;&lt;/div&gt;
+                &lt;div class=&quot;helpdesk-field&quot;&gt;&lt;label for=&quot;helpdesk-answer&quot;&gt;Responder&lt;/label&gt;&lt;textarea id=&quot;helpdesk-answer&quot; placeholder=&quot;Escreva uma resposta...&quot;&gt;&lt;/textarea&gt;&lt;/div&gt;
+                &lt;div class=&quot;helpdesk-action-row&quot;&gt;&lt;button class=&quot;helpdesk-button primary&quot; type=&quot;button&quot;&gt;&lt;i data-lucide=&quot;send&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Enviar resposta&lt;/button&gt;&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;aside class=&quot;helpdesk-dialog-side&quot;&gt;
+              &lt;dl&gt;
+                &lt;div&gt;&lt;dt&gt;Solicitante&lt;/dt&gt;&lt;dd&gt;Lucas Pacheco&lt;/dd&gt;&lt;/div&gt;
+                &lt;div&gt;&lt;dt&gt;Departamento&lt;/dt&gt;&lt;dd&gt;Operações&lt;/dd&gt;&lt;/div&gt;
+                &lt;div&gt;&lt;dt&gt;Criada em&lt;/dt&gt;&lt;dd&gt;05/08/2026 às 09:18&lt;/dd&gt;&lt;/div&gt;
+                &lt;div&gt;&lt;dt&gt;Última atualização&lt;/dt&gt;&lt;dd&gt;Hoje às 15:24&lt;/dd&gt;&lt;/div&gt;
+              &lt;/dl&gt;
+            &lt;/aside&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;helpdesk-dialog-foot&quot;&gt;&lt;button class=&quot;helpdesk-button danger&quot; type=&quot;button&quot;&gt;&lt;i data-lucide=&quot;trash-2&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Excluir&lt;/button&gt;&lt;div class=&quot;helpdesk-action-row&quot;&gt;&lt;button class=&quot;helpdesk-button&quot; type=&quot;button&quot; data-open-screen=&quot;solicitacoes&quot;&gt;Fechar&lt;/button&gt;&lt;button class=&quot;helpdesk-button primary&quot; type=&quot;button&quot;&gt;&lt;i data-lucide=&quot;circle-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Finalizar solicitação&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;helpdesk-screen&quot; data-helpdesk-panel=&quot;admin&quot; aria-label=&quot;Painel administrativo&quot;&gt;
+      &lt;header class=&quot;helpdesk-app-header&quot;&gt;
+        &lt;div class=&quot;helpdesk-brand&quot;&gt;&lt;span class=&quot;helpdesk-brand-mark&quot;&gt;&lt;i data-lucide=&quot;cloud&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Help System&lt;/strong&gt;&lt;small&gt;Specialisterne + Salesforce&lt;/small&gt;&lt;/span&gt;&lt;/div&gt;
+        &lt;nav class=&quot;helpdesk-main-nav&quot; aria-label=&quot;Navegação principal&quot;&gt;&lt;button type=&quot;button&quot; data-open-screen=&quot;solicitacoes&quot;&gt;Solicitações&lt;/button&gt;&lt;button type=&quot;button&quot; class=&quot;is-current&quot;&gt;Admin&lt;/button&gt;&lt;/nav&gt;
+        &lt;div class=&quot;helpdesk-header-actions&quot;&gt;&lt;button class=&quot;helpdesk-icon-button&quot; type=&quot;button&quot; aria-label=&quot;Notificações&quot;&gt;&lt;i data-lucide=&quot;bell&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;button class=&quot;helpdesk-button&quot; type=&quot;button&quot;&gt;&lt;i data-lucide=&quot;log-out&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Sair&lt;/button&gt;&lt;/div&gt;
+      &lt;/header&gt;
+
+      &lt;div class=&quot;helpdesk-page-head&quot;&gt;&lt;div&gt;&lt;p class=&quot;helpdesk-eyebrow&quot;&gt;Configurações&lt;/p&gt;&lt;h1&gt;Painel administrativo&lt;/h1&gt;&lt;p&gt;Gerencie usuários, categorias e departamentos.&lt;/p&gt;&lt;/div&gt;&lt;button class=&quot;helpdesk-button&quot; type=&quot;button&quot;&gt;&lt;i data-lucide=&quot;refresh-cw&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Atualizar dados&lt;/button&gt;&lt;/div&gt;
+
+      &lt;main class=&quot;helpdesk-page-body&quot;&gt;
+        &lt;div class=&quot;helpdesk-metrics&quot; aria-label=&quot;Resumo dos usuários&quot;&gt;&lt;div class=&quot;helpdesk-metric&quot;&gt;&lt;span&gt;Usuários&lt;/span&gt;&lt;strong&gt;42&lt;/strong&gt;&lt;/div&gt;&lt;div class=&quot;helpdesk-metric&quot;&gt;&lt;span&gt;Ativos&lt;/span&gt;&lt;strong&gt;39&lt;/strong&gt;&lt;/div&gt;&lt;div class=&quot;helpdesk-metric&quot;&gt;&lt;span&gt;Administradores&lt;/span&gt;&lt;strong&gt;3&lt;/strong&gt;&lt;/div&gt;&lt;div class=&quot;helpdesk-metric&quot;&gt;&lt;span&gt;Inativos&lt;/span&gt;&lt;strong&gt;3&lt;/strong&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;div class=&quot;helpdesk-admin-grid&quot;&gt;
+          &lt;div class=&quot;helpdesk-admin-stack&quot;&gt;
+            &lt;section class=&quot;helpdesk-panel&quot;&gt;
+              &lt;div class=&quot;helpdesk-section-title&quot;&gt;&lt;div&gt;&lt;h2&gt;Categorias&lt;/h2&gt;&lt;p&gt;Tipos de solicitação&lt;/p&gt;&lt;/div&gt;&lt;span class=&quot;helpdesk-chip neutral&quot;&gt;4&lt;/span&gt;&lt;/div&gt;
+              &lt;div class=&quot;helpdesk-panel-content&quot;&gt;&lt;div class=&quot;helpdesk-inline-fields&quot;&gt;&lt;div class=&quot;helpdesk-field&quot; style=&quot;flex: 1 1 160px;&quot;&gt;&lt;label for=&quot;helpdesk-new-category&quot;&gt;Nova categoria&lt;/label&gt;&lt;input id=&quot;helpdesk-new-category&quot; type=&quot;text&quot; placeholder=&quot;Nome&quot; /&gt;&lt;/div&gt;&lt;button class=&quot;helpdesk-button primary&quot; type=&quot;button&quot; style=&quot;align-self: end;&quot;&gt;&lt;i data-lucide=&quot;plus&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; Adicionar&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;helpdesk-catalog-list&quot;&gt;&lt;div class=&quot;helpdesk-catalog-item&quot;&gt;&lt;span&gt;Sistemas&lt;/span&gt;&lt;button class=&quot;helpdesk-icon-button&quot; type=&quot;button&quot; aria-label=&quot;Excluir categoria Sistemas&quot;&gt;&lt;i data-lucide=&quot;trash-2&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;helpdesk-catalog-item&quot;&gt;&lt;span&gt;Acessos&lt;/span&gt;&lt;button class=&quot;helpdesk-icon-button&quot; type=&quot;button&quot; aria-label=&quot;Excluir categoria Acessos&quot;&gt;&lt;i data-lucide=&quot;trash-2&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;helpdesk-catalog-item&quot;&gt;&lt;span&gt;Cadastro&lt;/span&gt;&lt;button class=&quot;helpdesk-icon-button&quot; type=&quot;button&quot; aria-label=&quot;Excluir categoria Cadastro&quot;&gt;&lt;i data-lucide=&quot;trash-2&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;/section&gt;
+            &lt;section class=&quot;helpdesk-panel&quot;&gt;
+              &lt;div class=&quot;helpdesk-section-title&quot;&gt;&lt;div&gt;&lt;h2&gt;Departamentos&lt;/h2&gt;&lt;p&gt;Áreas da empresa&lt;/p&gt;&lt;/div&gt;&lt;span class=&quot;helpdesk-chip neutral&quot;&gt;5&lt;/span&gt;&lt;/div&gt;
+              &lt;div class=&quot;helpdesk-panel-content&quot;&gt;&lt;div class=&quot;helpdesk-catalog-list&quot; style=&quot;margin-top: 0;&quot;&gt;&lt;div class=&quot;helpdesk-catalog-item&quot;&gt;&lt;span&gt;Operações&lt;/span&gt;&lt;button class=&quot;helpdesk-icon-button&quot; type=&quot;button&quot; aria-label=&quot;Excluir departamento Operações&quot;&gt;&lt;i data-lucide=&quot;trash-2&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;helpdesk-catalog-item&quot;&gt;&lt;span&gt;Tecnologia&lt;/span&gt;&lt;button class=&quot;helpdesk-icon-button&quot; type=&quot;button&quot; aria-label=&quot;Excluir departamento Tecnologia&quot;&gt;&lt;i data-lucide=&quot;trash-2&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;/section&gt;
+          &lt;/div&gt;
+
+          &lt;section class=&quot;helpdesk-panel&quot;&gt;
+            &lt;div class=&quot;helpdesk-section-title&quot;&gt;&lt;div&gt;&lt;h2&gt;Usuários&lt;/h2&gt;&lt;p&gt;Contas e permissões de acesso&lt;/p&gt;&lt;/div&gt;&lt;div class=&quot;helpdesk-field&quot;&gt;&lt;label for=&quot;helpdesk-user-search&quot;&gt;Buscar usuário&lt;/label&gt;&lt;input id=&quot;helpdesk-user-search&quot; type=&quot;search&quot; placeholder=&quot;Nome ou e-mail&quot; /&gt;&lt;/div&gt;&lt;/div&gt;
+            &lt;div class=&quot;helpdesk-table-wrap&quot;&gt;&lt;table class=&quot;helpdesk-table&quot;&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Usuário&lt;/th&gt;&lt;th&gt;Perfil&lt;/th&gt;&lt;th&gt;Status&lt;/th&gt;&lt;th&gt;Ações&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;div class=&quot;helpdesk-user-cell&quot;&gt;&lt;span class=&quot;helpdesk-avatar&quot;&gt;LP&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Lucas Pacheco&lt;/strong&gt;&lt;small&gt;lucas@empresa.com&lt;/small&gt;&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;helpdesk-chip&quot;&gt;Administrador&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;helpdesk-chip success&quot;&gt;Ativo&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&quot;helpdesk-user-actions&quot;&gt;&lt;button class=&quot;helpdesk-button&quot; type=&quot;button&quot;&gt;Rebaixar&lt;/button&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;div class=&quot;helpdesk-user-cell&quot;&gt;&lt;span class=&quot;helpdesk-avatar&quot;&gt;AS&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Ana Souza&lt;/strong&gt;&lt;small&gt;ana@empresa.com&lt;/small&gt;&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;helpdesk-chip neutral&quot;&gt;Comum&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;helpdesk-chip success&quot;&gt;Ativo&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&quot;helpdesk-user-actions&quot;&gt;&lt;button class=&quot;helpdesk-button&quot; type=&quot;button&quot;&gt;Promover&lt;/button&gt;&lt;button class=&quot;helpdesk-icon-button&quot; type=&quot;button&quot; aria-label=&quot;Desativar Ana Souza&quot;&gt;&lt;i data-lucide=&quot;user-x&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;div class=&quot;helpdesk-user-cell&quot;&gt;&lt;span class=&quot;helpdesk-avatar&quot;&gt;FA&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Felipe Andrade&lt;/strong&gt;&lt;small&gt;felipe@empresa.com&lt;/small&gt;&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;helpdesk-chip neutral&quot;&gt;Comum&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;helpdesk-chip neutral&quot;&gt;Inativo&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&quot;helpdesk-user-actions&quot;&gt;&lt;button class=&quot;helpdesk-button&quot; type=&quot;button&quot;&gt;Reativar&lt;/button&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;
+            &lt;div class=&quot;helpdesk-list-footer&quot;&gt;&lt;span&gt;Mostrando 1–10 de 42 usuários&lt;/span&gt;&lt;div class=&quot;helpdesk-pagination&quot;&gt;&lt;button class=&quot;helpdesk-page-button&quot; type=&quot;button&quot; aria-label=&quot;Página anterior&quot;&gt;&lt;i data-lucide=&quot;chevron-left&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;button class=&quot;helpdesk-page-button current&quot; type=&quot;button&quot;&gt;1&lt;/button&gt;&lt;button class=&quot;helpdesk-page-button&quot; type=&quot;button&quot;&gt;2&lt;/button&gt;&lt;button class=&quot;helpdesk-page-button&quot; type=&quot;button&quot; aria-label=&quot;Próxima página&quot;&gt;&lt;i data-lucide=&quot;chevron-right&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;
+          &lt;/section&gt;
+        &lt;/div&gt;
+      &lt;/main&gt;
+    &lt;/section&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    (function () {
+      const root = document.getElementById(&#x27;hs-salesforce-light-mockup&#x27;);
+      const pickerButtons = root.querySelectorAll(&#x27;[data-helpdesk-screen]&#x27;);
+      const panels = root.querySelectorAll(&#x27;[data-helpdesk-panel]&#x27;);
+
+      function showScreen(screenName) {
+        pickerButtons.forEach((button) =&gt; {
+          button.setAttribute(&#x27;aria-pressed&#x27;, String(button.getAttribute(&#x27;data-helpdesk-screen&#x27;) === screenName));
+        });
+        panels.forEach((panel) =&gt; {
+          panel.classList.toggle(&#x27;is-active&#x27;, panel.getAttribute(&#x27;data-helpdesk-panel&#x27;) === screenName);
+        });
+        if (window.lucide) {
+          window.lucide.createIcons({ attrs: { width: 16, height: 16 } });
+        }
+      }
+
+      pickerButtons.forEach((button) =&gt; {
+        button.addEventListener(&#x27;click&#x27;, () =&gt; showScreen(button.getAttribute(&#x27;data-helpdesk-screen&#x27;)));
+      });
+
+      root.querySelectorAll(&#x27;[data-open-screen]&#x27;).forEach((button) =&gt; {
+        button.addEventListener(&#x27;click&#x27;, () =&gt; showScreen(button.getAttribute(&#x27;data-open-screen&#x27;)));
+      });
+    })();
+  &lt;/script&gt;
+&lt;/div&gt;
+
+&lt;script src=&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set([&quot;top&quot;, &quot;right&quot;, &quot;bottom&quot;, &quot;left&quot;]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+
+  const getTrigger = (target) =&gt;
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest(&quot;[data-tooltip]&quot;)
+      : null;
+  const containsTarget = (trigger, target) =&gt;
+    target?.nodeType != null &amp;&amp; trigger.contains(target);
+  const getContent = (trigger) =&gt;
+    trigger.getAttribute(&quot;data-tooltip&quot;)?.trim() ?? &quot;&quot;;
+  const getPlacement = (trigger) =&gt; {
+    const placement = trigger.getAttribute(&quot;data-tooltip-placement&quot;);
+    return tooltipPlacements.has(placement) ? placement : &quot;top&quot;;
+  };
+  const getTooltip = () =&gt; {
+    if (tooltip == null) {
+      tooltip = document.createElement(&quot;div&quot;);
+      tooltip.id = tooltipId;
+      tooltip.className = &quot;tooltip&quot;;
+      tooltip.setAttribute(&quot;role&quot;, &quot;tooltip&quot;);
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) =&gt; {
+    const ids = new Set(
+      (trigger.getAttribute(&quot;aria-describedby&quot;) ?? &quot;&quot;)
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute(&quot;aria-describedby&quot;);
+    } else {
+      trigger.setAttribute(&quot;aria-describedby&quot;, [...ids].join(&quot; &quot;));
+    }
+  };
+  const clearOpenTimeout = () =&gt; {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) =&gt; {
+    clearOpenTimeout();
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) =&gt; {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-width&quot;,
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-height&quot;,
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: &quot;fixed&quot;,
+    })
+      .then(({ x, y }) =&gt; {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = &quot;visible&quot;;
+      })
+      .catch(() =&gt; {
+        if (activeTrigger === trigger &amp;&amp; request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) =&gt; {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = &quot;hidden&quot;;
+    floating.style.transform = &quot;translate(0, 0)&quot;;
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () =&gt; {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) =&gt; {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() &lt; skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() =&gt; {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) =&gt; {
+    if (event.pointerType === &quot;touch&quot;) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handleLeave = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(&quot;:focus-visible&quot;)) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) =&gt; {
+    if (event.key === &quot;Escape&quot;) {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () =&gt; {
+    closeTooltip(false);
+    document.removeEventListener(&quot;pointerover&quot;, handlePointerOpen);
+    document.removeEventListener(&quot;pointerout&quot;, handleLeave);
+    document.removeEventListener(&quot;focusin&quot;, handleFocusIn);
+    document.removeEventListener(&quot;focusout&quot;, handleLeave);
+    document.removeEventListener(&quot;keydown&quot;, handleKeyDown);
+    document.removeEventListener(&quot;contextmenu&quot;, handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener(&quot;pointerover&quot;, handlePointerOpen);
+  document.addEventListener(&quot;pointerout&quot;, handleLeave);
+  document.addEventListener(&quot;focusin&quot;, handleFocusIn);
+  document.addEventListener(&quot;focusout&quot;, handleLeave);
+  document.addEventListener(&quot;keydown&quot;, handleKeyDown);
+  document.addEventListener(&quot;contextmenu&quot;, handleContextMenu);
+  window.addEventListener(&quot;pagehide&quot;, destroy, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-lucide&quot; async src=&quot;https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  const initialize = () =&gt; {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById(&quot;codex-visualization-lucide&quot;)
+    ?.addEventListener(&quot;load&quot;, initialize, { once: true });
+})();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+</body>
+</html>

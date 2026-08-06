@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -89,6 +90,20 @@ public class SolicitacaoController {
                 .body(new ApiResponse(true, r.getMensagem(), new SolicitacaoResponse(r.getSolicitacao())));
     }
 
+    @PutMapping("/solicitacoes/{id}")
+    public ResponseEntity<ApiResponse> editar(@PathVariable Integer id,
+                                              @RequestBody SolicitacaoRequest req,
+                                              HttpServletRequest request) {
+        Usuario usuarioLogado = (Usuario) request.getAttribute(AuthInterceptor.USUARIO_LOGADO);
+        ResultadoOperacao r = solicitacoes.editar(id, req, usuarioLogado);
+        if (!r.isSucesso()) {
+            HttpStatus status = statusErroEdicao(r.getMensagem());
+            return ResponseEntity.status(status).body(new ApiResponse(false, r.getMensagem(), null));
+        }
+
+        return ResponseEntity.ok(new ApiResponse(true, r.getMensagem(), new SolicitacaoResponse(r.getSolicitacao())));
+    }
+
     @PatchMapping("/solicitacoes/{id}/resolver")
     public ResponseEntity<ApiResponse> resolver(@PathVariable Integer id, HttpServletRequest request) {
         Usuario usuarioLogado = (Usuario) request.getAttribute(AuthInterceptor.USUARIO_LOGADO);
@@ -115,5 +130,16 @@ public class SolicitacaoController {
         }
 
         return ResponseEntity.ok(new ApiResponse(true, r.getMensagem(), null));
+    }
+
+    /** Traduz a mensagem de erro da edição no status HTTP adequado. */
+    private HttpStatus statusErroEdicao(String mensagem) {
+        if (mensagem.contains("Solicitação não encontrada")) {
+            return HttpStatus.NOT_FOUND;
+        }
+        if (mensagem.contains("Apenas o autor")) {
+            return HttpStatus.FORBIDDEN;
+        }
+        return HttpStatus.BAD_REQUEST;
     }
 }

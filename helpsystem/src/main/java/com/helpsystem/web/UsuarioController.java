@@ -106,11 +106,23 @@ public class UsuarioController {
         return ResponseEntity.ok(new ApiResponse(true, r.getMensagem(), new UsuarioResponse(r.getUsuario())));
     }
 
+    @PatchMapping("/usuarios/{id}/reativar")
+    public ResponseEntity<ApiResponse> reativar(@PathVariable Integer id, HttpServletRequest request) {
+        Usuario usuarioLogado = (Usuario) request.getAttribute(AuthInterceptor.USUARIO_LOGADO);
+        ResultadoOperacao r = usuarios.reativar(id, usuarioLogado);
+        if (!r.isSucesso()) {
+            HttpStatus status = statusErroUsuario(r.getMensagem());
+            return ResponseEntity.status(status).body(new ApiResponse(false, r.getMensagem(), null));
+        }
+
+        return ResponseEntity.ok(new ApiResponse(true, r.getMensagem(), new UsuarioResponse(r.getUsuario())));
+    }
+
     private HttpStatus statusErroUsuario(String mensagem) {
         if (mensagem.contains("não encontrado")) {
             return HttpStatus.NOT_FOUND;
         }
-        if (mensagem.contains("inválido") || mensagem.contains("já está inativo")) {
+        if (mensagem.contains("inválido") || mensagem.contains("já está")) {
             return HttpStatus.BAD_REQUEST;
         }
         return HttpStatus.FORBIDDEN;

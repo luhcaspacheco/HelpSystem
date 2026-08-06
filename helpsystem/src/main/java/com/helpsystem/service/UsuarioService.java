@@ -130,6 +130,27 @@ public class UsuarioService {
         return ResultadoOperacao.ok("Usuário excluído com sucesso.", usuario);
     }
 
+    public ResultadoOperacao reativar(Integer id, Usuario usuarioLogado) {
+        if (usuarioLogado == null || !usuarioLogado.isAdmin()) {
+            return ResultadoOperacao.erro("Apenas administradores podem reativar usuários.");
+        }
+        if (id == null || id <= 0) {
+            return ResultadoOperacao.erro("Usuário não encontrado.");
+        }
+
+        Usuario usuario = usuarioRepository.findById(id).orElse(null);
+        if (usuario == null) {
+            return ResultadoOperacao.erro("Usuário não encontrado.");
+        }
+        if (usuario.isAtivo()) {
+            return ResultadoOperacao.erro("Usuário já está ativo.");
+        }
+
+        usuario.setAtivo(true);
+        usuarioRepository.save(usuario);
+        return ResultadoOperacao.ok("Usuário reativado com sucesso.", usuario);
+    }
+
     private boolean emailValido(String email) {
         return email.matches("^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$");
     }
