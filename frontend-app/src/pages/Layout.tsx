@@ -113,9 +113,26 @@ export default function Layout() {
     navigate('/login')
   }
 
+  // Verifica novas notificações periodicamente, sem precisar recarregar a página.
   useEffect(() => {
+    if (!user) {
+      setTotalNaoLidas(0)
+      return
+    }
+
     carregarTotalNaoLidas()
-  }, [user])
+
+    const intervalo = setInterval(() => {
+      carregarTotalNaoLidas()
+      // se o painel estiver aberto, atualiza também a lista em tempo real
+      if (isNotificationsOpen) {
+        carregarNotificacoes()
+      }
+    }, 20000)
+
+    return () => clearInterval(intervalo)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, isNotificationsOpen])
 
   return (
     <div className={isAuthPage ? 'layout-container auth-layout' : 'layout-container'}>
