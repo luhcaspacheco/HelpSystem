@@ -320,25 +320,6 @@ export default function Admin() {
         </button>
       </section>
 
-      <section className="admin-stats">
-        <div>
-          <span>Total</span>
-          <strong>{stats.total}</strong>
-        </div>
-        <div>
-          <span>Ativos</span>
-          <strong>{stats.ativos}</strong>
-        </div>
-        <div>
-          <span>Administradores</span>
-          <strong>{stats.admins}</strong>
-        </div>
-        <div>
-          <span>Inativos</span>
-          <strong>{stats.inativos}</strong>
-        </div>
-      </section>
-
       <div className="admin-content-grid">
       <section className="admin-management">
         <div className="admin-panel">
@@ -415,6 +396,24 @@ export default function Admin() {
       </section>
 
       <div className="admin-users-column">
+      <section className="admin-stats">
+        <div>
+          <span>Total</span>
+          <strong>{stats.total}</strong>
+        </div>
+        <div>
+          <span>Ativos</span>
+          <strong>{stats.ativos}</strong>
+        </div>
+        <div>
+          <span>Administradores</span>
+          <strong>{stats.admins}</strong>
+        </div>
+        <div>
+          <span>Inativos</span>
+          <strong>{stats.inativos}</strong>
+        </div>
+      </section>
       <section className="admin-user-filter">
         <label>
           <span>Buscar usuário</span>
