@@ -203,9 +203,14 @@ export default function Solicitacoes() {
       return
     }
 
-    if (!formData.titulo || !formData.categoriaId || !formData.descricao) {
+    const camposFaltando: string[] = []
+    if (!formData.titulo.trim()) camposFaltando.push('título')
+    if (!formData.categoriaId) camposFaltando.push('categoria')
+    if (!formData.descricao.trim()) camposFaltando.push('descrição')
+
+    if (camposFaltando.length > 0) {
       setAlertType('error')
-      setAlertMessage('Preencha título, categoria e descrição.')
+      setAlertMessage(`Preencha: ${camposFaltando.join(', ')}.`)
       return
     }
 
