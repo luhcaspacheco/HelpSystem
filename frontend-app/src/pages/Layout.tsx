@@ -97,6 +97,14 @@ export default function Layout() {
     }
   }
 
+  async function abrirNotificacao(notificacao: Notificacao) {
+    if (!notificacao.lida) {
+      await marcarComoLida(notificacao.id)
+    }
+    setIsNotificationsOpen(false)
+    navigate(`/solicitacoes?abrir=${notificacao.solicitacaoId}`)
+  }
+
   async function handleLogout() {
     await logout()
     setNotificacoes([])
@@ -193,9 +201,8 @@ export default function Layout() {
                 <h2>Notificações</h2>
                 <p>Acompanhe atualizações das suas solicitações.</p>
               </div>
-              <button type="button" className="modal-close-button" onClick={() => setIsNotificationsOpen(false)}>
+              <button type="button" className="modal-close-button" aria-label="Fechar" onClick={() => setIsNotificationsOpen(false)}>
                 <X aria-hidden="true" />
-                <span className="sr-only">Fechar</span>
               </button>
             </div>
 
@@ -207,14 +214,34 @@ export default function Layout() {
               )}
               {!isLoadingNotifications &&
                 notificacoes.map((notificacao) => (
-                  <article className={`notification-item ${notificacao.lida ? 'read' : 'unread'}`} key={notificacao.id}>
+                  <article
+                    className={`notification-item ${notificacao.lida ? 'read' : 'unread'}`}
+                    key={notificacao.id}
+                    role="button"
+                    tabIndex={0}
+                    title="Abrir a solicitação"
+                    onClick={() => abrirNotificacao(notificacao)}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault()
+                        abrirNotificacao(notificacao)
+                      }
+                    }}
+                  >
                     <div>
                       <strong>{notificacao.solicitacaoTitulo}</strong>
                       <p>{notificacao.mensagem}</p>
                       <span>{formatDateTime(notificacao.dataCriacao)}</span>
                     </div>
                     {!notificacao.lida && (
-                      <button type="button" className="mark-read-button" onClick={() => marcarComoLida(notificacao.id)}>
+                      <button
+                        type="button"
+                        className="mark-read-button"
+                        onClick={(event) => {
+                          event.stopPropagation()
+                          marcarComoLida(notificacao.id)
+                        }}
+                      >
                         Marcar como lida
                       </button>
                     )}

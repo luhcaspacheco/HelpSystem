@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState, type FormEvent } from 'react'
+import { useSearchParams } from 'react-router'
 import { CheckCircle2, ChevronLeft, ChevronRight, Pencil, Plus, Send, Trash2, X } from 'lucide-react'
 import './Solicitacoes.css'
 import Button from '@components/button'
@@ -99,6 +100,7 @@ export default function Solicitacoes() {
   const [filtros, setFiltros] = useState<FiltrosData>(initialFiltrosData)
   const [paginaAtual, setPaginaAtual] = useState(1)
   const [itensPorPagina, setItensPorPagina] = useState(5)
+  const [searchParams, setSearchParams] = useSearchParams()
 
   const carregarCategorias = useCallback(async () => {
     try {
@@ -253,6 +255,32 @@ export default function Solicitacoes() {
       setIsLoadingRespostas(false)
     }
   }
+
+  // Abre automaticamente o detalhe quando chega de uma notificação (/solicitacoes?abrir=<id>).
+  useEffect(() => {
+    const abrirId = searchParams.get('abrir')
+    if (!abrirId) return
+
+    let ativo = true
+    const abrirDaNotificacao = async () => {
+      try {
+        const response = await api.get<ApiResponse<Solicitacao>>(`/solicitacoes/${abrirId}`)
+        if (ativo && response.data.sucesso && response.data.dado) {
+          await carregarRespostas(response.data.dado)
+        }
+      } catch (error) {
+        console.error('Erro ao abrir a solicitação da notificação:', error)
+      } finally {
+        // limpa o parâmetro para não reabrir ao fechar o modal ou atualizar a página
+        searchParams.delete('abrir')
+        setSearchParams(searchParams, { replace: true })
+      }
+    }
+
+    abrirDaNotificacao()
+    return () => { ativo = false }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams])
 
   const handleRespostaSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
